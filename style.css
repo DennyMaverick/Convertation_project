@@ -24,6 +24,10 @@ input {
   outline: none;
 }
 
+.convert-form__output {
+  cursor: default;
+}
+
 :root {
   --black: #2b2b2b;
   --white: #ffffff;
@@ -35,7 +39,7 @@ input {
   --active-output-coin-box-shadow-hover: #fff;
   --active-output-coin-bg: #26ce0f;
   --active-output-coin-bg-hover: #68c95c;
-  --orange: rgb(210, 77, 15);
+  --orange: #A52A2A;
   --bisque: bisque;
 }
 
@@ -75,10 +79,12 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
 }
 
 .convert-form__inputs {
-  background-color: #0c0c4f;
+  background-color: #1a1a1b;
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -86,7 +92,7 @@ button {
 }
 
 .convert-form__outputs {
-  background-color: #4a4130;
+  background-color: #1a1a1b;
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -140,7 +146,6 @@ button {
 
 .course-item {
   padding: 20px;
-  box-shadow: 0 0 10px var(--white);
 }
 
 .courses__item + .courses__item {
@@ -188,7 +193,7 @@ button {
 .input-coins__item {
   cursor: pointer;
   padding: 7px 12px;
-  box-shadow: 0 0 10px var(--white);
+  box-shadow: 0 0 10px var(--orange);
   color: var(--white);
   transition: all 0.2s ease-in;
 }
@@ -210,13 +215,14 @@ button {
 }
 
 .input-coins__item:hover {
-  box-shadow: 0 0 5px var(--active-input-coin-box-shadow-hover);
-  background-color: var(--active-input-coin-bg-hover);
+  box-shadow: 0 0 1px var(--active-input-coin-box-shadow-hover);
+  /* background-color: var(--active-input-coin-bg-hover); */
 }
 
+
 .output-coins__item:hover {
-  box-shadow: 0 0 5px var(--active-output-coin-box-shadow-hover);
-  background-color: var(--active-output-coin-bg-hover);
+  box-shadow: 0 0 1px var(--active-input-coin-box-shadow-hover);
+  /* background-color: var(--active-input-coin-bg-hover); */
 }
 
 .coins__item + .coins__item {
@@ -229,8 +235,8 @@ button {
 }
 
 .output-coin--active {
-  box-shadow: 0 0 10px var(--active-output-coin-box-shadow);
-  background-color: var(--active-output-coin-bg);
+  box-shadow: 0 0 10px var(--active-input-coin-box-shadow);
+  background-color: var(--active-input-coin-bg);
 }
 
 .convert-form__items {
@@ -257,7 +263,7 @@ button {
   line-height: 30px;
   color: var(--white);
   background-color: var(--orange);
-  box-shadow: 0px 0 5px var(--white);
+  box-shadow: 0px 0 5px var(--orange);
   max-width: 110px;
   margin-right: 12px;
 }
