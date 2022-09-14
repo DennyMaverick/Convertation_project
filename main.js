@@ -11,6 +11,7 @@
 //  Объект с курсами 3-х валют
 const rates = {}
 //  Элементы для отображения курса валют
+const convertForm = document.querySelector(".convert-form")
 const InputCoinItems = document.querySelectorAll(".input-coins__item")
 const OutputCoinItems = document.querySelectorAll(".output-coins__item")
 const coinNameOut = document.querySelector("#coinNameOut")
@@ -23,6 +24,10 @@ const input = document.querySelector("#input")
 const result = document.querySelector("#result")
 const select = document.querySelector("#select")
 const resultBtn = document.querySelector(".output-coins__output-btn")
+
+const openThemeBtn = document.querySelector(".switcher-theme__open")
+const schemeList = document.querySelector(".scheme-list")
+const schemeListItems = document.querySelectorAll(".scheme-item")
 
 getCurrencies()
 
@@ -135,8 +140,10 @@ InputCoinItems.forEach(function (item) {
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
+      input.style.backgroundColor = "#5A5A5B"
     } else {
       input.disabled = false
+      input.style.backgroundColor = "#fff"
     }
 
     InputCoinItems.forEach(function (item) {
@@ -169,8 +176,10 @@ OutputCoinItems.forEach(function (item) {
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
+      input.style.backgroundColor = "#5A5A5B"
     } else {
       input.disabled = false
+      input.style.backgroundColor = "#fff"
     }
     OutputCoinItems.forEach(function (item) {
       item.classList.remove("output-coin--active")
@@ -192,3 +201,42 @@ OutputCoinItems.forEach(function (item) {
 })
 
 resultBtn.addEventListener("click", convertValueToRight)
+
+// clear result
+input.oninput = clearResult
+
+function clearResult() {
+  if (!input.value) {
+    result.value = ""
+  }
+}
+
+// input focus - blur
+
+input.addEventListener("focus", function () {
+  this.classList.add("convert-form__input--focus")
+})
+
+input.addEventListener("blur", function () {
+  this.classList.remove("convert-form__input--focus")
+})
+
+// open close scheme-list
+
+openThemeBtn.addEventListener("click", function (e) {
+  e.preventDefault()
+  schemeList.classList.toggle("vhidden")
+  this.classList.toggle("switcher-theme__open--active")
+})
+
+convertForm.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("switcher-theme__open") && !e.target.classList.contains("scheme-item__btn")) {
+    schemeList.classList.add("vhidden")
+  }
+})
+
+schemeListItems.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault()
+  })
+})

@@ -4,14 +4,45 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="./fonts/OpenSans/OpenSans-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/OpenSans/OpenSans-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/OpenSans/OpenSans-LightItalic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/OpenSans/OpenSans-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/font.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 
     <title>Конвертер валют на JavaScript</title>
   </head>
   <body>
     <div class="container">
       <form class="convert-form">
+        <div class="switcher-theme">
+          <button class="switcher-theme__open">
+            выбрать тему
+          </button>
+          <ul class="vhidden switcher-theme__scheme-list scheme-list">
+            <li class="scheme-list__item scheme-item">
+              <button class="scheme-item__btn" data-theme = "light">
+                светлая
+              </button>
+            </li>
+            <li class="scheme-list__item scheme-item">
+              <button class="scheme-item__btn" data-theme = "dark">
+                тёмная
+              </button>
+            </li>
+            <li class="scheme-list__item scheme-item">
+              <button class="scheme-item__btn" data-theme = "moon">
+                лунная
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="lang-bar">
+          <button class="lang-bar__btn">ru</button>
+          <button class="lang-bar__btn">en</button>
+        </div>
         <h1 class="convert-form__title">Конвертер валют</h1>
         <div class="convert-form__content">
           <div class="convert-form__courses courses">
@@ -35,10 +66,10 @@
                 <span id="coinNameIn" class="form-input__coin">RUB - Рубль Россия</span>
               </div>
               <div class="coins__input input-coins">
-                <button class="input-coins__item input-coin--active" data-value="RUS">RUB</button>
-                <button class="input-coins__item" data-coin="EUR">EUR</button>
-                <button class="input-coins__item" data-coin="USD">USD</button>
-                <button class="input-coins__item" data-coin="GBP">GBP</button>
+                <button class="input-coins__item coins__item input-coin--active" data-value="RUS">RUB</button>
+                <button class="input-coins__item coins__item" data-coin="EUR">EUR</button>
+                <button class="input-coins__item coins__item" data-coin="USD">USD</button>
+                <button class="input-coins__item coins__item" data-coin="GBP">GBP</button>
               </div>
               <input id="input" type="number" class="convert-form__intput convert-form__output-item" autofocus />
             </div>
@@ -48,15 +79,13 @@
                 <span id="coinNameOut" class="form-input__coin">USD — Доллар США</span>
               </div>
               <div class="coins__output output-coins">
-                <button class="output-coins__item" data-value="RUS">RUB</button>
-                <button class="output-coins__item" data-coin="EUR">EUR</button>
-                <button class="output-coins__item output-coin--active" data-coin="USD">USD</button>
-                <button class="output-coins__item" data-coin="GBP">GBP</button>
+                <button class="output-coins__item coins__item" data-value="RUS">RUB</button>
+                <button class="output-coins__item coins__item" data-coin="EUR">EUR</button>
+                <button class="output-coins__item coins__item output-coin--active" data-coin="USD">USD</button>
+                <button class="output-coins__item coins__item" data-coin="GBP">GBP</button>
               </div>
               <div class="output-coins__footer">
-                <button class="output-coins__output-btn">
-                  Посчитать
-                </button>
+                <button class="output-coins__output-btn">Посчитать</button>
                 <input id="result" type="number" class="convert-form__output convert-form__output-item" />
               </div>
             </div>
@@ -64,6 +93,7 @@
         </div>
       </form>
     </div>
-    <script src="main.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
