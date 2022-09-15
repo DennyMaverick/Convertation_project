@@ -79,6 +79,16 @@ button {
   border: none;
 }
 
+button:active {
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 3px var(--white);
+}
+
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -513,6 +523,10 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.switcher-theme__open:hover {
+  opacity: .8;
 }
 
 .switcher-theme__open--light {
