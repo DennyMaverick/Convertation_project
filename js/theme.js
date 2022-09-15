@@ -1,5 +1,6 @@
 const switchers = document.querySelectorAll(".scheme-item__btn")
 
+
 const themes = {
   ".convert-form": {
     theme: {
@@ -85,6 +86,13 @@ const themes = {
       moon: "output-coins__output-btn--moon",
     },
   },
+  ".convert-form__input--focus": {
+    theme: {
+      light: "convert-form__input--focus-light",
+      dark: "convert-form__input--focus-dark",
+      moon: "convert-form__input--focus-moon",
+    },
+  },
 }
 function themeSwitch(theme) {
   for (key in themes) {
@@ -105,6 +113,18 @@ function themeSwitch(theme) {
   }
 }
 
+const activeTheme = localStorage.getItem("theme")
+
+const activeThemeStates = {
+  currentTheme: `${activeTheme}`,
+}
+
+// изменение цвета - замена темы - для неактивного инпута
+
+const colorsThemesInputDisable = {
+  state: "",
+}
+
 switchers.forEach((switcher) => {
   switcher.addEventListener("click", function (e) {
     if (e.target.closest(".scheme-item__btn").dataset.theme === "light") {
@@ -122,6 +142,20 @@ switchers.forEach((switcher) => {
     }
     localStorage.setItem("theme", this.dataset.theme)
 
+    // замена цвета неактивного инпута - смена темы при клике на кнопку выбора темы
+
+    if (activeThemeStates.currentTheme === "light") {
+      colorsThemesInputDisable.state = "#48A9A9"
+    } else if (activeThemeStates.currentTheme === "dark") {
+      colorsThemesInputDisable.state = "#A79E9E"
+    } else {
+      colorsThemesInputDisable.state = "#3F3FE8"
+    }
+
+    if (inputValuesState.value === outputValuesState.value) {
+      input.style.backgroundColor = `${colorsThemesInputDisable.state}`
+    }
+
     // подсветка активному элементу
 
     switchers.forEach(function (switcher) {
@@ -130,12 +164,6 @@ switchers.forEach((switcher) => {
     this.classList.add("scheme-item__btn--active")
   })
 })
-
-const activeTheme = localStorage.getItem("theme")
-
-const activeThemeStates = {
-  currentTheme: `${activeTheme}`,
-}
 
 if (activeTheme === null) {
   themeSwitch("dark")

@@ -29,6 +29,8 @@ const openThemeBtn = document.querySelector(".switcher-theme__open")
 const schemeList = document.querySelector(".scheme-list")
 const schemeListItems = document.querySelectorAll(".scheme-item")
 
+
+
 getCurrencies()
 
 // Функция получения курса валют и отображения их на странице
@@ -135,12 +137,16 @@ InputCoinItems.forEach(function (item) {
     if (event.target.dataset.coin) {
       inputValuesState.value = event.target.dataset.coin
     } else if (event.target.dataset.value === "RUS") {
-      coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+      if (langCurrentStates.startState === "ru") {
+        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+      } else {
+        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
+      }
       inputValuesState.value = "RUS"
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
-      input.style.backgroundColor = "#5A5A5B"
+      input.style.backgroundColor = `${colorsThemesInputDisable.state}`
     } else {
       input.disabled = false
       input.style.backgroundColor = "#fff"
@@ -151,14 +157,26 @@ InputCoinItems.forEach(function (item) {
     })
     switch (this.dataset.coin) {
       case "EUR":
-        coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} -Euro USA`
+        }
 
         break
       case "USD":
-        coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Dollar USA`
+        }
         break
       case "GBP":
-        coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+        }
         break
     }
     this.classList.add("input-coin--active", `input-coin--active-${activeThemeStates.currentTheme}`)
@@ -171,12 +189,16 @@ OutputCoinItems.forEach(function (item) {
     if (event.target.dataset.coin) {
       outputValuesState.value = event.target.dataset.coin
     } else if (event.target.dataset.value === "RUS") {
-      coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+      if (langCurrentStates.startState === "ru") {
+        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+      } else {
+        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
+      }
       outputValuesState.value = "RUS"
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
-      input.style.backgroundColor = "#5A5A5B"
+      input.style.backgroundColor = `${colorsThemesInputDisable.state}`
     } else {
       input.disabled = false
       input.style.backgroundColor = "#fff"
@@ -186,14 +208,25 @@ OutputCoinItems.forEach(function (item) {
     })
     switch (this.dataset.coin) {
       case "EUR":
-        coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
-
+        if (langCurrentStates.startState === "ru") {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+        } else {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Euro USA`
+        }
         break
       case "USD":
-        coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
+        if (langCurrentStates.startState === "ru") {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
+        } else {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Dollar USA`
+        }
         break
       case "GBP":
-        coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+        if (langCurrentStates.startState === "ru") {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+        } else {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+        }
         break
     }
     this.classList.add("output-coin--active", `output-coin--active-${activeThemeStates.currentTheme}`)
@@ -214,11 +247,11 @@ function clearResult() {
 // input focus - blur
 
 input.addEventListener("focus", function () {
-  this.classList.add("convert-form__input--focus")
+  this.classList.add(`convert-form__input--focus-${activeThemeStates.currentTheme}`)
 })
 
 input.addEventListener("blur", function () {
-  this.classList.remove("convert-form__input--focus")
+  this.classList.remove(`convert-form__input--focus-${activeThemeStates.currentTheme}`)
 })
 
 // open close scheme-list
@@ -251,3 +284,19 @@ input.addEventListener("input", function () {
     this.value = splitString.slice(0, limit).join("")
   }
 })
+
+// замена цвета неактивного инпута - смена темы при старте страницы
+
+if (activeThemeStates.currentTheme === "light") {
+  colorsThemesInputDisable.state = "#48A9A9"
+} else if (activeThemeStates.currentTheme === "dark") {
+  colorsThemesInputDisable.state = "#A79E9E"
+} else {
+  colorsThemesInputDisable.state = "#3F3FE8"
+}
+
+if (inputValuesState.value === outputValuesState.value) {
+  input.style.backgroundColor = `${colorsThemesInputDisable.state}`
+}
+
+
