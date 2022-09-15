@@ -29,6 +29,62 @@ const themes = {
       moon: "convert-form__courses--moon",
     },
   },
+  ".switcher-theme__open": {
+    theme: {
+      light: "switcher-theme__open--light",
+      dark: "switcher-theme__open--dark",
+      moon: "switcher-theme__open--moon",
+    },
+  },
+  ".lang-bar__btn": {
+    theme: {
+      light: "lang-bar__btn--light",
+      dark: "lang-bar__btn--dark",
+      moon: "lang-bar__btn--moon",
+    },
+  },
+  ".scheme-item__btn": {
+    theme: {
+      light: "scheme-item__btn--light",
+      dark: "scheme-item__btn--dark",
+      moon: "scheme-item__btn--moon",
+    },
+  },
+  ".input-block": {
+    theme: {
+      light: "input-block--light",
+      dark: "input-block--dark",
+      moon: "input-block--moon",
+    },
+  },
+  ".input-coin--active": {
+    theme: {
+      light: "input-coin--active-light",
+      dark: "input-coin--active-dark",
+      moon: "input-coin--active-moon",
+    },
+  },
+  ".output-coin--active": {
+    theme: {
+      light: "output-coin--active-light",
+      dark: "output-coin--active-dark",
+      moon: "output-coin--active-moon",
+    },
+  },
+  ".coins__item": {
+    theme: {
+      light: "coins__item--light",
+      dark: "coins__item--dark",
+      moon: "coins__item--moon",
+    },
+  },
+  ".output-coins__output-btn": {
+    theme: {
+      light: "output-coins__output-btn--light",
+      dark: "output-coins__output-btn--dark",
+      moon: "output-coins__output-btn--moon",
+    },
+  },
 }
 function themeSwitch(theme) {
   for (key in themes) {
@@ -53,19 +109,42 @@ switchers.forEach((switcher) => {
   switcher.addEventListener("click", function (e) {
     if (e.target.closest(".scheme-item__btn").dataset.theme === "light") {
       themeSwitch("light")
+
+      activeThemeStates.currentTheme = "light"
     } else if (e.target.closest(".scheme-item__btn").dataset.theme === "dark") {
       themeSwitch("dark")
+
+      activeThemeStates.currentTheme = "dark"
     } else {
       themeSwitch("moon")
+
+      activeThemeStates.currentTheme = "moon"
     }
     localStorage.setItem("theme", this.dataset.theme)
+
+    // подсветка активному элементу
+
+    switchers.forEach(function (switcher) {
+      switcher.classList.remove("scheme-item__btn--active")
+    })
+    this.classList.add("scheme-item__btn--active")
   })
 })
 
 const activeTheme = localStorage.getItem("theme")
+
+const activeThemeStates = {
+  currentTheme: `${activeTheme}`,
+}
 
 if (activeTheme === null) {
   themeSwitch("dark")
 } else {
   themeSwitch(activeTheme)
 }
+
+// подсветка активному элементу переключателя тем, если еще не было клика
+
+const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
+
+currentThemeBtn.classList.add("scheme-item__btn--active")

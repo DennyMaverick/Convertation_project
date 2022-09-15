@@ -13,6 +13,8 @@
   --line-light: #c2ae37;
   --line-dark: #c5352e;
   --line-moon: #fff;
+  --title-moon: #dacfcf;
+  --form-light-color: #d3c6c6;
 }
 
 body {
@@ -27,11 +29,11 @@ body {
   background-color: rgb(242, 226, 183);
 }
 .body--dark {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .body--moon {
-  background-color: rgba(65,78,165, 0.3);
+  background-color: rgba(12, 36, 195, 0.4);
 }
 
 h1,
@@ -42,6 +44,12 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 ul {
@@ -62,8 +70,6 @@ input {
   cursor: default;
 }
 
-
-
 button {
   background-color: transparent;
   border: none;
@@ -79,7 +85,6 @@ button {
 .convert-form {
   position: relative;
   width: 693px;
-
 }
 
 .convert-form--dark {
@@ -87,11 +92,11 @@ button {
 }
 
 .convert-form--light {
-  background-color: var(--white);
+  background-color: rgba(0, 139, 139, 0.7);
 }
 
 .convert-form--moon {
-  background-color: var(--moon);
+  background-image: linear-gradient(to right bottom, #7d5f5f, darkblue);
 }
 
 .convert-form__title {
@@ -108,11 +113,11 @@ button {
 }
 
 .convert-form__title--light {
-  color: var(--black);
+  color: #084740;
 }
 
 .convert-form__title--moon {
-  color: var(--black);
+  color: var(--title-moon);
 }
 
 .convert-form__content {
@@ -128,22 +133,19 @@ button {
 }
 
 .convert-form__courses--dark {
-  border: 1px solid var(--line--dark);
+  background-image: linear-gradient(to right bottom, #ae0800, #000);
 }
 
 .convert-form__courses--light {
-  border: 1px solid var(--line--light);
+  background-image: linear-gradient(to right bottom, #597d73, darkcyan);
 }
 
 .convert-form__courses--moon {
-  background-image: linear-gradient(to right bottom, var(--blue), var(--black));
+  background-image: linear-gradient(to right bottom, rgb(6 6 253), #801bff);
+  box-shadow: 0px 0px 5px var(--black);
 }
 
 .convert-form__inputs {
-  background-color: #1a1a1b;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
   margin-right: 20px;
 }
 
@@ -151,22 +153,57 @@ button {
   transition: all 0.3s ease-in;
 }
 
+.convert-form__input,
+.convert-form__output {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  padding: 15px;
+  padding-left: 10px;
+  /* font-size: 15px; */
+}
+
 .convert-form__input--focus {
   outline: 1.5px solid green;
   box-shadow: 0 0 5px green;
 }
 
-.convert-form__outputs {
-  background-color: #1a1a1b;
+.convert-form__outputs,
+.convert-form__inputs {
   padding: 15px;
   display: flex;
   justify-content: space-between;
 }
 
+.input-block--light {
+  background-color: darkcyan;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.input-block--light:hover {
+  box-shadow: 0 0 7px var(--black);
+}
+
+.input-block--dark {
+  background-color: #1a1a1b;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.input-block--dark:hover {
+  box-shadow: 0px 0px 7px var(--orange);
+}
+
+.input-block--moon {
+  background-color: darkslateblue;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.input-block--moon:hover {
+  box-shadow: 0 0 7px var(--black);
+}
+
 .convert-form__output-item {
   height: 10px;
-  padding: 10px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .convert-form__form-control {
@@ -229,7 +266,7 @@ button {
 
 .course-item__value {
   font-size: 30px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .course-item__value.top {
@@ -263,9 +300,20 @@ button {
   font-weight: 300;
   cursor: pointer;
   padding: 7px 12px;
-  box-shadow: 0 0 10px var(--orange);
   color: var(--white);
   transition: all 0.2s ease-in;
+}
+
+.coins__item--light {
+  box-shadow: 0 0 10px #084740;
+}
+
+.coins__item--dark {
+  box-shadow: 0 0 10px var(--orange);
+}
+
+.coins__item--moon {
+  box-shadow: 0 0 10px #20b2aa;
 }
 
 .input-coins__item + .input-coins__item {
@@ -290,14 +338,22 @@ button {
   margin-left: 20px;
 }
 
-.input-coin--active {
+.input-coin--active-light,
+.output-coin--active-light {
+  background-color: #084740;
+  box-shadow: 0 0 10px #084740;
+}
+
+.input-coin--active-dark,
+.output-coin--active-dark {
   box-shadow: 0 0 10px var(--active-input-coin-box-shadow);
   background-color: var(--active-input-coin-bg);
 }
 
-.output-coin--active {
-  box-shadow: 0 0 10px var(--active-input-coin-box-shadow);
-  background-color: var(--active-input-coin-bg);
+.input-coin--active-moon,
+.output-coin--active-moon {
+  background-color: #20b2aa;
+  box-shadow: 0 0 10px #20b2aa;
 }
 
 .convert-form__items {
@@ -319,24 +375,49 @@ button {
 }
 
 .output-coins__output-btn {
+  text-transform: uppercase;
   cursor: pointer;
-  font-size: 15px;
-  line-height: 30px;
+  font-size: 13px;
+  padding: 10px 13px;
+  line-height: 0.8;
   color: var(--white);
-  background-color: var(--orange);
-  box-shadow: 0px 0 5px var(--orange);
   max-width: 110px;
   margin-right: 12px;
-  transition: background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
 }
 
-.output-coins__output-btn:hover {
+.output-coins__output-btn--light {
+  background-color: #084740;
+  box-shadow: 0px 0 5px #084740;
+}
+
+.output-coins__output-btn--dark {
+  background-color: var(--orange);
+  box-shadow: 0px 0 5px var(--orange);
+}
+
+.output-coins__output-btn--moon {
+  background-color: #20b2aa;
+  box-shadow: 0px 0 5px #20b2aa;
+}
+
+.output-coins__output-btn--dark:hover {
   background-color: rgba(165, 42, 42, 0.8);
   box-shadow: 0 0 7px var(--dark);
 }
 
+.output-coins__output-btn--light:hover {
+  background-color: rgba(8,71,64, 0.8);
+  box-shadow: 0 0 7px var(--white);
+}
+
+.output-coins__output-btn--moon:hover {
+  background-color: rgba(32,178,170, 0.8);
+  box-shadow: 0 0 7px var(--white);
+}
+
 #result {
-  max-width: 100px;
+  max-width: 130px;
 }
 
 .lang-bar {
@@ -360,15 +441,37 @@ button {
 }
 
 .lang-bar__btn:first-child {
-  background-color: var(--dark);
   border-radius: 30px 0 0 30px;
   padding-right: 4px;
 }
 
 .lang-bar__btn:last-child {
-  background-color: var(--orange);
   border-radius: 0 30px 30px 0;
   padding-left: 4px;
+}
+
+.lang-bar__btn--light:first-child {
+  background-color: dimgrey;
+}
+
+.lang-bar__btn--light:last-child {
+  background-color: darkcyan;
+}
+
+.lang-bar__btn--dark:first-child {
+  background-color: var(--dark);
+}
+
+.lang-bar__btn--dark:last-child {
+  background-color: var(--orange);
+}
+
+.lang-bar__btn--moon:first-child {
+  background-color: #6495ed;
+}
+
+.lang-bar__btn--moon:last-child {
+  background-color: lightseagreen;
 }
 
 .switcher-theme {
@@ -381,18 +484,6 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 
-.light-btn {
-  padding: 5px 4px;
-  background-color: var(--white);
-  color: var(--black);
-}
-
-.dark-btn {
-  padding: 5px 7px;
-  background-color: var(--dark);
-  color: var(--white);
-}
-
 .switcher-theme__open {
   position: relative;
   border-radius: 3px;
@@ -401,10 +492,22 @@ button {
   padding: 5px 7px;
   padding-right: 35px;
   color: var(--white);
-  background-color: var(--orange);
+
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.switcher-theme__open--light {
+  background-color: #2a90a5;
+}
+
+.switcher-theme__open--dark {
+  background-color: var(--orange);
+}
+
+.switcher-theme__open--moon {
+  background-color: cornflowerblue;
 }
 
 .switcher-theme__open::after {
@@ -418,7 +521,7 @@ button {
   background-image: url(../images/arrow-down.svg);
   background-repeat: no-repeat;
   background-size: 15px 15px;
-  transition: transform .3s ease-in;
+  transition: transform 0.3s ease-in;
 }
 
 .switcher-theme__open--active::after {
@@ -446,16 +549,37 @@ button {
   top: 0;
   width: 0%;
   height: 100%;
-  background-color: rgba(12, 23, 23, 0.3);
+
   transition: width 0.2s ease-in;
+}
+
+.scheme-item__btn--light::after {
+  background-color: rgba(41, 167, 167, 0.3);
+}
+
+.scheme-item__btn--dark::after {
+  background-color: rgba(12, 23, 23, 0.3);
+}
+
+.scheme-item__btn--moon::after {
+  background-color: rgba(66, 24, 143, 0.3);
 }
 
 .scheme-item__btn:hover::after {
   width: 100%;
 }
 
+.scheme-item__btn--active::after {
+  width: 100%;
+}
+
 .scheme-list {
   transition: all 0.3s ease-in;
+  border: 1px solid var(--black);
+  position: absolute;
+  width: 100%;
+  top: 34px;
+  left: 0;
 }
 
 .scheme-list__item {
@@ -469,7 +593,6 @@ button {
 /* helpers */
 .vhidden {
   opacity: 0;
-  height: 0;
-  width: 0;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }

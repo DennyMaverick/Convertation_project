@@ -147,7 +147,7 @@ InputCoinItems.forEach(function (item) {
     }
 
     InputCoinItems.forEach(function (item) {
-      item.classList.remove("input-coin--active")
+      item.classList.remove("input-coin--active", "input-coin--active-light", "input-coin--active-dark", "input-coin--active-moon")
     })
     switch (this.dataset.coin) {
       case "EUR":
@@ -161,7 +161,7 @@ InputCoinItems.forEach(function (item) {
         coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
         break
     }
-    this.classList.add("input-coin--active")
+    this.classList.add("input-coin--active", `input-coin--active-${activeThemeStates.currentTheme}`)
   })
 })
 
@@ -182,7 +182,7 @@ OutputCoinItems.forEach(function (item) {
       input.style.backgroundColor = "#fff"
     }
     OutputCoinItems.forEach(function (item) {
-      item.classList.remove("output-coin--active")
+      item.classList.remove("output-coin--active", "output-coin--active-light", "output-coin--active-dark", "output-coin--active-moon")
     })
     switch (this.dataset.coin) {
       case "EUR":
@@ -196,7 +196,7 @@ OutputCoinItems.forEach(function (item) {
         coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
         break
     }
-    this.classList.add("output-coin--active")
+    this.classList.add("output-coin--active", `output-coin--active-${activeThemeStates.currentTheme}`)
   })
 })
 
@@ -240,4 +240,14 @@ schemeListItems.forEach((item) => {
   item.addEventListener("click", (e) => {
     e.preventDefault()
   })
+})
+
+// ограничение введения количества символов в input
+
+input.addEventListener("input", function () {
+  const limit = 7
+  const splitString = this.value.split("")
+  if (input.value.length > limit) {
+    this.value = splitString.slice(0, limit).join("")
+  }
 })
