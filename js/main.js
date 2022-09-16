@@ -29,8 +29,6 @@ const openThemeBtn = document.querySelector(".switcher-theme__open")
 const schemeList = document.querySelector(".scheme-list")
 const schemeListItems = document.querySelectorAll(".scheme-item")
 
-
-
 getCurrencies()
 
 // Функция получения курса валют и отображения их на странице
@@ -299,4 +297,48 @@ if (inputValuesState.value === outputValuesState.value) {
   input.style.backgroundColor = `${colorsThemesInputDisable.state}`
 }
 
+if (document.documentElement.clientWidth < "768") {
+  const langsShort = {
+    ru: "тема",
+    en: "theme",
+  }
+  if (hash === "ru") {
+    openThemeBtn.innerHTML = `${langsShort[hash]}`
+  } else {
+    openThemeBtn.innerHTML = `${langsShort[hash]}`
+  }
+} else {
+  const langsLong = {
+    ru: "выбрать тему",
+    en: "change theme",
+  }
+  if (hash === "ru") {
+    openThemeBtn.innerHTML = `${langsLong[hash]}`
+  } else {
+    openThemeBtn.innerHTML = `${langsLong[hash]}`
+  }
+}
 
+window.addEventListener("resize", function () {
+  if (document.documentElement.clientWidth < "768") {
+    const langsShort = {
+      ru: "тема",
+      en: "theme",
+    }
+    if (hash === "ru") {
+      openThemeBtn.innerHTML = `${langsShort[hash]}`
+    } else {
+      openThemeBtn.innerHTML = `${langsShort[hash]}`
+    }
+  } else {
+    const langsLong = {
+      ru: "выбрать тему",
+      en: "change theme",
+    }
+    if (hash === "ru") {
+      openThemeBtn.innerHTML = `${langsLong[hash]}`
+    } else {
+      openThemeBtn.innerHTML = `${langsLong[hash]}`
+    }
+  }
+})

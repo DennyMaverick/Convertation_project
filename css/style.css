@@ -88,9 +88,9 @@ button:active {
   box-shadow: 0 0 3px var(--white);
 }
 
-
 .container {
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding-right: 10px;
   padding-left: 10px;
@@ -98,8 +98,9 @@ button:active {
 
 .convert-form {
   position: relative;
-  width: 693px;
+  max-width: 693px;
   transition: all 0.3s ease-in;
+  margin: 20px;
 }
 
 .convert-form--dark {
@@ -117,6 +118,7 @@ button:active {
 .convert-form__title {
   font-weight: 700;
   padding: 30px;
+  padding-top: 80px;
   font-size: 25px;
   text-transform: uppercase;
   text-align: center;
@@ -278,10 +280,6 @@ button:active {
 
 .course-item {
   padding: 20px;
-}
-
-.courses__item + .courses__item {
-  margin-left: 40px;
 }
 
 .course-item__title {
@@ -526,7 +524,7 @@ button:active {
 }
 
 .switcher-theme__open:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .switcher-theme__open--light {
@@ -628,11 +626,14 @@ button:active {
   clip: rect(0, 0, 0, 0);
 }
 
+.hidden {
+  display: none;
+}
 
 /* preloader */
 
 .preloader-page {
-  background-color: rgba(255,255,255);
+  background-color: rgba(255, 255, 255);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -643,15 +644,185 @@ button:active {
 }
 
 .preloader-page::before {
-    content: '';
-    width: 220px;
-    height: 220px;
-    background-image: url('../images/coin-flip-preloader.gif');
-    background-position: center;
-    background-size: cover;
-    border-radius: 50%;
+  content: "";
+  width: 220px;
+  height: 220px;
+  background-image: url("../images/coin-flip-preloader.gif");
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.preloader-page.done {
+  display: none;
+}
+
+/* Media Requests */
+
+@media (max-width: 768px) {
+  .lang-bar__btn {
+    font-size: 10px;
+    padding: 7px;
+    width: 40px;
+  }
+  .lang-bar {
+    right: 12px;
+    top: 12px;
+  }
+  .switcher-theme__open {
+    font-size: 12px;
+    padding: 5px 10px;
+    padding-right: 35px;
+    border-radius: 0 5px 5px 5px;
+  }
+  .switcher-theme__open::after {
+    background-size: 13px 13px;
+    right: 4px;
+  }
+  .switcher-theme {
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .scheme-list {
+    top: 50px;
   }
 
-  .preloader-page.done {
-    display: none;
+  .convert-form__courses {
+    max-width: 470px;
+    margin: 0 auto 50px;
   }
+
+  .convert-form__title {
+    font-size: 21px;
+  }
+  .course-item__title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .course-item__value {
+    font-size: 24px;
+  }
+
+  .course-item {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .convert-form__items {
+    flex-direction: column;
+    align-items: center;
+  }
+  .convert-form__inputs {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .convert-form__input {
+    max-width: 78%;
+  }
+
+  .convert-form__inputs, .convert-form__outputs {
+    max-width: 470px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scheme-item__btn {
+    font-size: 12px;
+  }
+  .form-input__title,
+  .form-output__title {
+    font-size: 15px;
+  }
+
+  .form-input__coin,
+  .form-output__coin {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 580px) {
+  .coins__item {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+  .coins__item + .coins__item {
+    margin-left: 13px;
+  }
+
+  .output-coins__output-btn {
+    font-size: 11px;
+  }
+
+  .convert-form__input, .convert-form__output {
+    padding: 12px;
+    padding-left: 8px;
+    font-size: 12px;
+  }
+
+  .convert-form__input {
+    max-width: 71%;
+  }
+}
+
+@media (max-width: 450px) {
+  .course-item__title {
+    font-size: 18px;
+  }
+  .course-item__value {
+    font-size: 18px;
+  }
+
+  .convert-form__input {
+    max-width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .scheme-item__btn {
+    font-size: 10px;
+  }
+  .convert-form {
+    margin: 0;
+    min-height: 100vh;
+  }
+  .container {
+    padding: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .course-item__title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 350px) {
+  .convert-form__content {
+    padding: 10px;
+    padding-top: 0;
+  }
+  .course-item__title {
+    margin-bottom: 9px;
+  }
+}
+
+@media (max-width: 325px) {
+  .course-item {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .convert-form__title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 300px) {
+  .course-item__title {
+    font-size: 14px;
+  }
+}
