@@ -41,7 +41,7 @@
 ### Особенности и тонкости проекта:
   
 Проект имеет свои особенности, которые могут сразу не бросаться в глаза:
-  
+    
 - При разрешении экрана меньше 768 px кнопка 'Выбрать тему' или 'Chenge theme' превращается просто в 'Тема' или 'Theme'. При этом, это будет происходить при ресайзинге окна браузера в реальном времени. Это сделано благодаря событию javascript 'resize', при этом возникла сложность, с переключением языков. Динамическое изменение надписи было достигнуто благодаря установленному значению hash в строке поиска (ru / en) в зависимости от выбранного языка (по умолчанию это русский) а также дополнительным объектам langsShort и langsLong, в которых хранятся надписи:
   
 ```
@@ -85,7 +85,58 @@ window.addEventListener("resize", function () {
 })
 
 ```
-  
+
+- При выборе валюты, кликая на кнопки, происходит динамическая замена надписей в зависимости от выбранной валюты. Возникла сложность, как это реализовать, чтобы перевод корректно работал. Было следующее решение, записать в объект с текущим состоянием выбранного языка: 
+
+```
+const langCurrentStates = {
+  startState: hash,
+}
+```
+И, в зависимости от этого значения, выполнять замену надписей в окошках, где прописывается, какая валюта берется, и какая получается в итоге:
+
+```
+switch (this.dataset.coin) {
+      case "EUR":
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} -Euro USA`
+        }
+
+        break
+      case "USD":
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Dollar USA`
+        }
+        break
+      case "GBP":
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+        }
+        break
+    }
+```
+
+- Также возникла сложность с подсветкой активной валюты в окнах ввода и вывода, для каждой темы эта подсветка должна по задуманной идее быть уникальна, своего цвета. Выход нашелся, создать объект с состоянием текущей темы и через шаблонные строки добавлять нажатой кнопке класс, который имел свойства, подходящие под дизайн текущей кнопки, в соответствии с выбранной темой, при этом, при клике удалять все классы других тем:
+
+```
+const activeTheme = localStorage.getItem("theme")
+
+const activeThemeStates = {
+  currentTheme: `${activeTheme}`,
+}
+
+OutputCoinItems.forEach(function (item) {
+      item.classList.remove("output-coin--active", "output-coin--active-light", "output-coin--active-dark", "output-coin--active-moon")
+    })
+    
+this.classList.add("output-coin--active", `output-coin--active-${activeThemeStates.currentTheme}`)    
+```
 
 При разработке возникали трудности с переключением тем и языков. Но, в процессе работы все сложности были самостоятельно решены. Время на выполнение данного проекта — приблизительно 3 дня или 18 часов непрерывной работы.
 
