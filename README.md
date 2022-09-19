@@ -9,7 +9,6 @@
 При разработке данного проекта были использованы следующие инструменты и технологии:
 </p>
 
-![sass](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/1.svg)
 ![css/html/javascript](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/2.svg)
 ![bem-naming](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/4.svg)
 
