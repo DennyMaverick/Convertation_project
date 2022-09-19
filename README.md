@@ -31,10 +31,12 @@
 
 При разработке проекта были использованы следующие инструменты и технологии:
 
-— Редактор кода VS Code;
-— HTML5 / CSS3 / JS;
-— normalize.css;
-— Prettier;
+<ul>
+ <li>Редактор кода VS Code;</li>
+ <li>HTML5 / CSS3 / JS;</li>
+ <li>normalize.css;</li>
+ <li>Prettier;</li>
+</ul> 
   
 ### Особенности и тонкости проекта:
   
