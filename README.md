@@ -12,7 +12,6 @@
 ![sass](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/1.svg)
 ![css/html/javascript](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/2.svg)
 ![bem-naming](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/4.svg)
-![gulp](https://github.com/DennyMaverick/Archee/raw/main/img-readme/bages/6.svg)
 
 <p>
  Начало было положено на интенсиве школы WebCademy в 2021 году. Благодарю Юрия за обучающее видео.
