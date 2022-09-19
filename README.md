@@ -138,7 +138,58 @@ OutputCoinItems.forEach(function (item) {
 this.classList.add("output-coin--active", `output-coin--active-${activeThemeStates.currentTheme}`)    
 ```
 
-При разработке возникали трудности с переключением тем и языков. Но, в процессе работы все сложности были самостоятельно решены. Время на выполнение данного проекта — приблизительно 3 дня или 18 часов непрерывной работы.
+- При выборе входной валюты и выходной, если они одинаковы, окошко с вводом затемняется, и становится недоступным для ввода. Это сделано благодаря созданным объектам состояний, куда помещается текущее значение кликнутой кнопки валюты: 
+
+```
+const inputValuesState = {
+  value: "RUS",
+}
+
+const outputValuesState = {
+  value: "USD",
+}
+
+(часть кода при клике в окне ввода:)
+
+inputValuesState.value = event.target.dataset.coin 
+
+(часть кода при клике в окне вывода:)
+
+outputValuesState.value = event.target.dataset.coin
+
+if (inputValuesState.value === outputValuesState.value) {
+      input.disabled = true
+      input.style.backgroundColor = `${colorsThemesInputDisable.state}`
+    } else {
+      input.disabled = false
+      input.style.backgroundColor = "#fff"
+    }
+```
+
+Также этот инпут, что является неактивным, в зависимости от выбранной темы, имеет разный цвет при клике на кнопки с выбором вылюты или при клике на кнопки смены темы. Был создан объект с состоянием, куда был записан цвет в зависимости от выбранной темы: 
+
+```
+const colorsThemesInputDisable = {
+  state: "",
+}
+
+if (activeThemeStates.currentTheme === "light") {
+      colorsThemesInputDisable.state = "#48A9A9"
+    } else if (activeThemeStates.currentTheme === "dark") {
+      colorsThemesInputDisable.state = "#A79E9E"
+    } else {
+      colorsThemesInputDisable.state = "#3F3FE8"
+    }
+
+    if (inputValuesState.value === outputValuesState.value) {
+      input.style.backgroundColor = `${colorsThemesInputDisable.state}`
+    }
+```
+
+
+
+
+Время на выполнение данного проекта — приблизительно 3 дня или 18 часов непрерывной работы.
 
 На проект можно посмотреть здесь: https://dennymaverick.github.io/Convertation_project 
 Увидимся!✋🏻😊
