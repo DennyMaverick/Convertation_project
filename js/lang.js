@@ -1,6 +1,10 @@
 //* =========== Объект с переводом страницы ==============
 
 const langs = {
+  "title-page": {
+    ru: "Конвертер валют на JavaScript",
+    en: "Сurrency converter on JavaScript",
+  },
   title: {
     ru: "Конвертер валют",
     en: "Сurrency converter",
