@@ -127,6 +127,12 @@ function convertValueToRight(event) {
       }
     }
   })
+
+  if (input.value < 0) {
+    result.value = ""
+  } else {
+    input.style.backgroundColor = "white"
+  }
 }
 
 InputCoinItems.forEach(function (item) {

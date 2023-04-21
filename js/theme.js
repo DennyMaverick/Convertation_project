@@ -1,6 +1,5 @@
 const switchers = document.querySelectorAll(".scheme-item__btn")
 
-
 const themes = {
   ".convert-form": {
     theme: {
@@ -93,7 +92,6 @@ const themes = {
       moon: "convert-form__input--focus-moon",
     },
   },
-
 }
 function themeSwitch(theme) {
   for (key in themes) {
@@ -173,7 +171,11 @@ if (activeTheme === null) {
 }
 
 // подсветка активному элементу переключателя тем, если еще не было клика
+if (activeTheme) {
+  const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
 
-const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
-
-currentThemeBtn.classList.add("scheme-item__btn--active")
+  currentThemeBtn.classList.add("scheme-item__btn--active")
+} else {
+  const currentThemeBtn = document.querySelector(`[data-theme = "dark"]`)
+  currentThemeBtn.classList.add("scheme-item__btn--active")
+}

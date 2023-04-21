@@ -501,7 +501,7 @@ button:active {
 
 .switcher-theme {
   position: absolute;
-  left: 20px;
+  left: 30px;
   top: 20px;
 }
 
@@ -671,6 +671,8 @@ button:active {
   }
   .switcher-theme__open {
     font-size: 12px;
+    left: 12px;
+    top: 12px;
     padding: 5px 10px;
     padding-right: 35px;
     border-radius: 0 5px 5px 5px;
