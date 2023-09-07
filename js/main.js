@@ -77,8 +77,7 @@ const outputValuesState = {
 // input.oninput = convertValueToRight
 // result.oninput = convertValueToLeft
 // Функция конвертации
-function convertValueToRight(event) {
-  event.preventDefault()
+function convertValueToRight() {
   if (inputValuesState.value === outputValuesState.value) {
     result.value = ""
     input.value = ""
@@ -346,5 +345,14 @@ window.addEventListener("resize", function () {
     } else {
       openThemeBtn.innerHTML = `${langsLong[hash]}`
     }
+  }
+})
+
+// При нажатии на enter внутри поля ввода, должен происходить подсчет
+
+input.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    convertValueToRight()
+    event.preventDefault()
   }
 })
