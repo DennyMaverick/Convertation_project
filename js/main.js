@@ -352,6 +352,7 @@ window.addEventListener("resize", function () {
 
 input.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
+    this.blur
     convertValueToRight()
     event.preventDefault()
   }
