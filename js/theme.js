@@ -114,7 +114,7 @@ function themeSwitch(theme) {
 
 const activeTheme = localStorage.getItem("theme")
 
-const activeThemeStates = {
+let activeThemeStates = {
   currentTheme: `${activeTheme}`,
 }
 
@@ -166,6 +166,9 @@ switchers.forEach((switcher) => {
 
 if (activeTheme === null) {
   themeSwitch("dark")
+  activeThemeStates = {
+    currentTheme: "dark",
+  }
 } else {
   themeSwitch(activeTheme)
 }
