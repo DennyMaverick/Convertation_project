@@ -716,11 +716,11 @@ button:active {
 }
 
 .convert-form__input {
-    max-width: 120px;
-  }
-  .convert-form__input::placeholder {
-    font-size: 10px;
-  }
+  max-width: 120px;
+}
+.convert-form__input::placeholder {
+  font-size: 10px;
+}
 
 @media (max-width: 760px) {
   .convert-form__items {
@@ -732,7 +732,8 @@ button:active {
     margin-bottom: 20px;
   }
 
-  .convert-form__inputs, .convert-form__outputs {
+  .convert-form__inputs,
+  .convert-form__outputs {
     max-width: 470px;
   }
 }
@@ -765,7 +766,8 @@ button:active {
     font-size: 11px;
   }
 
-  .convert-form__input, .convert-form__output {
+  .convert-form__input,
+  .convert-form__output {
     padding: 12px;
     padding-left: 8px;
     font-size: 12px;
@@ -848,7 +850,8 @@ button:active {
   }
 }
 
-.output-coins__sign-value, .input-coins__sign-value {
+.output-coins__sign-value,
+.input-coins__sign-value {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -858,6 +861,7 @@ button:active {
   height: 25px;
   border-radius: 50%;
   flex-shrink: 0;
+  animation: rotation 3s ease-in alternate infinite;
 }
 
 .result-box {
@@ -865,4 +869,19 @@ button:active {
 }
 .input-box {
   display: flex;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg)
+  }
+  25% {
+    transform: rotate(10deg)
+  }
+  50% {
+    transform: rotate(0deg)
+  }
+  75% {
+    transform: rotate(-10deg)
+  }
 }
