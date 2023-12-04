@@ -375,8 +375,8 @@ updateSignInputValue("&#8381;")
 OutputCoinItems.forEach(function (item) {
   item.addEventListener("click", function (event) {
     event.preventDefault()
-
-    switch (event.target.dataset.signValue) {
+    const dataAttrSign = event.target.dataset.signValue
+    switch (dataAttrSign) {
       case "RUS":
         updateSignResultValue("&#8381;")
         break
@@ -399,9 +399,9 @@ OutputCoinItems.forEach(function (item) {
 InputCoinItems.forEach(function (item) {
   item.addEventListener("click", function (event) {
     event.preventDefault()
-
-    switch (event.target.dataset.signValue) {
-      case "RUS":
+    const dataAttrSign = event.target.dataset.signValue
+    switch (dataAttrSign) {
+      case "RUB":
         updateSignInputValue("&#8381;")
         break
       case "EUR":
@@ -414,7 +414,7 @@ InputCoinItems.forEach(function (item) {
         updateSignInputValue("&#36;")
         break
       default:
-        updateSignInputValue("&#36;")
+        updateSignInputValue("&#8381;")
         break
     }
   })
