@@ -22,6 +22,8 @@ const elementGBP = document.querySelector('[data-value="GBP"]')
 // Элементы формы, ввод суммы, выбор валюты, поле с результатом
 const input = document.querySelector("#input")
 const result = document.querySelector("#result")
+const resultSign = document.querySelector(".output-coins__sign-value")
+const inputSign = document.querySelector(".input-coins__sign-value")
 const select = document.querySelector("#select")
 const resultBtn = document.querySelector(".output-coins__output-btn")
 
@@ -356,4 +358,64 @@ input.addEventListener("keydown", function (event) {
     convertValueToRight()
     event.preventDefault()
   }
+})
+
+// Добавление знака валюты при клике на кнопки валют
+// функция обновления символа
+function updateSignResultValue(signValue) {
+  resultSign.innerHTML = signValue
+}
+
+function updateSignInputValue(signValue) {
+  inputSign.innerHTML = signValue
+}
+// значение символа по умолчанию
+updateSignResultValue("&#36;")
+updateSignInputValue("&#8381;")
+OutputCoinItems.forEach(function (item) {
+  item.addEventListener("click", function (event) {
+    event.preventDefault()
+
+    switch (event.target.dataset.signValue) {
+      case "RUS":
+        updateSignResultValue("&#8381;")
+        break
+      case "EUR":
+        updateSignResultValue("&#8364;")
+        break
+      case "GBP":
+        updateSignResultValue("&#163;")
+        break
+      case "USD":
+        updateSignResultValue("&#36;")
+        break
+      default:
+        updateSignResultValue("&#36;")
+        break
+    }
+  })
+})
+
+InputCoinItems.forEach(function (item) {
+  item.addEventListener("click", function (event) {
+    event.preventDefault()
+
+    switch (event.target.dataset.signValue) {
+      case "RUS":
+        updateSignInputValue("&#8381;")
+        break
+      case "EUR":
+        updateSignInputValue("&#8364;")
+        break
+      case "GBP":
+        updateSignInputValue("&#163;")
+        break
+      case "USD":
+        updateSignInputValue("&#36;")
+        break
+      default:
+        updateSignInputValue("&#36;")
+        break
+    }
+  })
 })

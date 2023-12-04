@@ -81,12 +81,15 @@
                 <span id="coinNameIn" class="form-input__coin lang-form-input__coin">RUB - Рубль Россия</span>
               </div>
               <div class="coins__input input-coins">
-                <button class="input-coins__item coins__item input-coin--active button" data-value="RUS">RUB</button>
-                <button class="input-coins__item coins__item button" data-coin="EUR">EUR</button>
-                <button class="input-coins__item coins__item button" data-coin="USD">USD</button>
-                <button class="input-coins__item coins__item button" data-coin="GBP">GBP</button>
+                <button class="input-coins__item coins__item input-coin--active button" data-value="RUS" data-sign-value="RUB">RUB</button>
+                <button class="input-coins__item coins__item button" data-coin="EUR" data-sign-value="EUR">EUR</button>
+                <button class="input-coins__item coins__item button" data-coin="USD" data-sign-value="USD">USD</button>
+                <button class="input-coins__item coins__item button" data-coin="GBP" data-sign-value="GBP">GBP</button>
               </div>
-              <input placeholder="Введите число" id="input" type="number" class="lang-placeholder-input convert-form__input convert-form__output-item" autofocus />
+              <div class="input-box">
+                <input placeholder="Введите число" id="input" type="number" class="lang-placeholder-input convert-form__input convert-form__output-item" autofocus />
+              <span class="input-coins__sign-value"></span>
+              </div>
             </div>
             <div class="convert-form__outputs input-block">
               <div class="form-input form-input__output">
@@ -94,14 +97,17 @@
                 <span id="coinNameOut" class="form-output__coin lang-form-output__coin">USD — Доллар США</span>
               </div>
               <div class="coins__output output-coins">
-                <button class="output-coins__item coins__item button" data-value="RUS">RUB</button>
-                <button class="output-coins__item coins__item button" data-coin="EUR">EUR</button>
+                <button class="output-coins__item coins__item button" data-value="RUS" data-sign-value="RUS">RUB</button>
+                <button class="output-coins__item coins__item button" data-coin="EUR" data-sign-value="EUR">EUR</button>
                 <button class="output-coins__item coins__item output-coin--active button" data-coin="USD">USD</button>
-                <button class="output-coins__item coins__item button" data-coin="GBP">GBP</button>
+                <button class="output-coins__item coins__item button" data-coin="GBP" data-sign-value="GBP">GBP</button>
               </div>
               <div class="output-coins__footer">
                 <button type="button" class="output-coins__output-btn lang-output-coins__output-btn button">Посчитать</button>
-                <input id="result" type="number" class="convert-form__output convert-form__output-item" />
+                <div class="result-box">
+                  <input id="result" type="number" class="convert-form__output convert-form__output-item" />
+                <span class="output-coins__sign-value"></span>
+                </div>
               </div>
             </div>
           </div>

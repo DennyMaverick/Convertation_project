@@ -68,6 +68,8 @@ input {
 
 .convert-form__output-item {
   outline: none;
+  margin-left: auto;
+  margin-right: 12px;
 }
 
 .convert-form__output {
@@ -172,6 +174,7 @@ button:active {
 
 .convert-form__input,
 .convert-form__output {
+  border-radius: 3px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   padding: 15px;
@@ -230,7 +233,7 @@ button:active {
 
 .convert-form__output-item {
   height: 10px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .convert-form__form-control {
@@ -442,7 +445,7 @@ button:active {
 }
 
 #result {
-  max-width: 130px;
+  max-width: 140px;
 }
 
 .lang-bar {
@@ -712,6 +715,13 @@ button:active {
   }
 }
 
+.convert-form__input {
+    max-width: 120px;
+  }
+  .convert-form__input::placeholder {
+    font-size: 10px;
+  }
+
 @media (max-width: 760px) {
   .convert-form__items {
     flex-direction: column;
@@ -720,10 +730,6 @@ button:active {
   .convert-form__inputs {
     margin-right: 0;
     margin-bottom: 20px;
-  }
-
-  .convert-form__input {
-    max-width: 78%;
   }
 
   .convert-form__inputs, .convert-form__outputs {
@@ -777,9 +783,10 @@ button:active {
   .course-item__value {
     font-size: 18px;
   }
-
-  .convert-form__input {
-    max-width: 100%;
+}
+@media (max-width: 430px) {
+  #result {
+    max-width: 107px;
   }
 }
 @media (max-width: 400px) {
@@ -818,6 +825,18 @@ button:active {
 }
 
 @media (max-width: 320px) {
+  #result {
+    margin-right: 10px;
+  }
+  .output-coins__footer {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .convert-form__output-item {
+    margin-right: auto;
+    margin-left: 0;
+  }
   .convert-form__title {
     font-size: 18px;
   }
@@ -827,4 +846,23 @@ button:active {
   .course-item__title {
     font-size: 14px;
   }
+}
+
+.output-coins__sign-value, .input-coins__sign-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border: 1px dashed var(--white);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.result-box {
+  display: flex;
+}
+.input-box {
+  display: flex;
 }
