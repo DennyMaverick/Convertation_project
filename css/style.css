@@ -1,6 +1,7 @@
 :root {
   --black: #2b2b2b;
   --white: #ffffff;
+  --grey: #cccccc;
   --active-input-coin-box-shadow: #ac1b1b;
   --active-input-coin-box-shadow-hover: #fff;
   --active-input-coin-bg: brown;
@@ -884,4 +885,66 @@ button:active {
   75% {
     transform: rotate(-10deg)
   }
+}
+
+/* Стрелочки внутри инпута убрать */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+/* кастомные стрелочки внутри input */
+
+.input-enter {
+  position: relative;
+}
+.arrows {
+  visibility: hidden;
+  margin-right: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  border-radius: 0 3px 0 3px;
+  width: 30px;
+  height: 12px;
+}
+
+.arrows--active {
+  visibility: visible;
+}
+
+.arrows span {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+}
+
+.arrows__left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 0 0 0 3px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--grey);
+}
+
+.arrows__right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 3px 0 0;
+  width: 15px;
+  height: 15px;
+  background-color: var(--grey);
 }

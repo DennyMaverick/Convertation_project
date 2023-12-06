@@ -31,6 +31,10 @@ const openThemeBtn = document.querySelector(".switcher-theme__open")
 const schemeList = document.querySelector(".scheme-list")
 const schemeListItems = document.querySelectorAll(".scheme-item")
 
+const arrowsInInput = document.querySelector(".arrows")
+const arrowLeft = document.querySelector(".arrows__left")
+const arrowRight = document.querySelector(".arrows__right")
+
 getCurrencies()
 
 // Функция получения курса валют и отображения их на странице
@@ -83,6 +87,7 @@ function convertValueToRight() {
   if (inputValuesState.value === outputValuesState.value) {
     result.value = ""
     input.value = ""
+    arrowsInInput.classList.remove("arrows--active")
   }
 
   OutputCoinItems.forEach((item) => {
@@ -185,6 +190,10 @@ InputCoinItems.forEach(function (item) {
         break
     }
     this.classList.add("input-coin--active", `input-coin--active-${activeThemeStates.currentTheme}`)
+
+    if (inputValuesState.value === outputValuesState.value) {
+      arrowsInInput.classList.remove("arrows--active")
+    }
   })
 })
 
@@ -235,6 +244,10 @@ OutputCoinItems.forEach(function (item) {
         break
     }
     this.classList.add("output-coin--active", `output-coin--active-${activeThemeStates.currentTheme}`)
+
+    if (inputValuesState.value === outputValuesState.value) {
+      arrowsInInput.classList.remove("arrows--active")
+    }
   })
 })
 
@@ -419,3 +432,32 @@ InputCoinItems.forEach(function (item) {
     }
   })
 })
+
+// добавление кастомных стрелочек в input
+
+arrowsInInput.addEventListener("mouseenter", function (e) {
+  e.stopPropagation()
+})
+
+input.addEventListener("click", function () {
+  arrowsInInput.classList.toggle("arrows--active")
+})
+
+arrowLeft.addEventListener("click", function () {
+  input.stepDown()
+  if (input.value < 0) {
+    inputForm.style.backgroundColor = "red"
+  } else {
+    input.style.backgroundColor = "white"
+  }
+})
+arrowRight.addEventListener("click", function () {
+  input.stepUp()
+  if (input.value < 0) {
+    input.style.backgroundColor = "red"
+  } else {
+    input.style.backgroundColor = "white"
+  }
+})
+
+

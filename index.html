@@ -87,7 +87,13 @@
                 <button class="input-coins__item coins__item button" data-coin="GBP" data-sign-value="GBP">GBP</button>
               </div>
               <div class="input-box">
-                <input placeholder="Введите число" id="input" type="number" class="lang-placeholder-input convert-form__input convert-form__output-item" autofocus />
+                <div class="input-enter">
+                  <input placeholder="Введите число" id="input" type="number" class="lang-placeholder-input convert-form__input convert-form__output-item" autofocus />
+                  <div class="input__arrows arrows">
+                    <span class="arrows__left" onselectstart="return false" onmousedown="return false">&#8722;</span>
+                    <span class="arrows__right" onselectstart="return false" onmousedown="return false">+</span>
+                  </div>
+                </div>
               <span class="input-coins__sign-value"></span>
               </div>
             </div>
