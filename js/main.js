@@ -435,12 +435,10 @@ InputCoinItems.forEach(function (item) {
 
 // добавление кастомных стрелочек в input
 
-arrowsInInput.addEventListener("mouseenter", function (e) {
-  e.stopPropagation()
-})
-
 input.addEventListener("click", function () {
-  arrowsInInput.classList.toggle("arrows--active")
+  if (document.documentElement.clientWidth > "768") {
+    arrowsInInput.classList.toggle("arrows--active")
+  }
 })
 
 arrowLeft.addEventListener("click", function () {
