@@ -441,6 +441,12 @@ input.addEventListener("click", function () {
   }
 })
 
+window.addEventListener("resize", function () {
+  if (document.documentElement.clientWidth < "768") {
+    arrowsInInput.classList.remove("arrows--active")
+  }
+})
+
 arrowLeft.addEventListener("click", function () {
   input.stepDown()
   if (input.value < 0) {
