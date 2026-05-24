@@ -34,8 +34,8 @@ const langs = {
     en: "dark",
   },
   "moon-theme": {
-    ru: "лунная",
-    en: "moon",
+    ru: "светлая",
+    en: "light",
   },
   "form-output__title": {
     ru: "Получаю:",
