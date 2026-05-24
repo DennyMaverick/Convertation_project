@@ -73,7 +73,7 @@ async function getCurrencies() {
 result.readOnly = "true"
 
 const inputValuesState = {
-  value: "RUS",
+  value: "RUB",
 }
 
 const outputValuesState = {
@@ -93,7 +93,7 @@ function convertValueToRight() {
   OutputCoinItems.forEach((item) => {
     if (input.value && item.classList.contains("output-coin--active")) {
       switch (inputValuesState.value) {
-        case "RUS":
+        case "RUB":
           if (item.dataset.coin) {
             result.value = (parseFloat(input.value) / rates[item.dataset.coin].Value).toFixed(2)
           }
@@ -125,7 +125,7 @@ function convertValueToRight() {
   InputCoinItems.forEach((item) => {
     if (input.value && item.classList.contains("input-coin--active")) {
       switch (outputValuesState.value) {
-        case "RUS":
+        case "RUB":
           if (item.dataset.coin) {
             result.value = (parseFloat(input.value) * rates[item.dataset.coin].Value).toFixed(2)
           }
@@ -146,13 +146,13 @@ InputCoinItems.forEach(function (item) {
     event.preventDefault()
     if (event.target.dataset.coin) {
       inputValuesState.value = event.target.dataset.coin
-    } else if (event.target.dataset.value === "RUS") {
+    } else if (event.target.dataset.value === "RUB") {
       if (langCurrentStates.startState === "ru") {
         coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
       } else {
         coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
       }
-      inputValuesState.value = "RUS"
+      inputValuesState.value = "RUB"
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
@@ -168,9 +168,9 @@ InputCoinItems.forEach(function (item) {
     switch (this.dataset.coin) {
       case "EUR":
         if (langCurrentStates.startState === "ru") {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} -Euro USA`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} -Euro`
         }
 
         break
@@ -202,13 +202,13 @@ OutputCoinItems.forEach(function (item) {
     event.preventDefault()
     if (event.target.dataset.coin) {
       outputValuesState.value = event.target.dataset.coin
-    } else if (event.target.dataset.value === "RUS") {
+    } else if (event.target.dataset.value === "RUB") {
       if (langCurrentStates.startState === "ru") {
         coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
       } else {
         coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
       }
-      outputValuesState.value = "RUS"
+      outputValuesState.value = "RUB"
     }
     if (inputValuesState.value === outputValuesState.value) {
       input.disabled = true
@@ -223,9 +223,9 @@ OutputCoinItems.forEach(function (item) {
     switch (this.dataset.coin) {
       case "EUR":
         if (langCurrentStates.startState === "ru") {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро США`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро`
         } else {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Euro USA`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Euro`
         }
         break
       case "USD":
@@ -390,7 +390,7 @@ OutputCoinItems.forEach(function (item) {
     event.preventDefault()
     const dataAttrSign = event.target.dataset.signValue
     switch (dataAttrSign) {
-      case "RUS":
+      case "RUB":
         updateSignResultValue("&#8381;")
         break
       case "EUR":
