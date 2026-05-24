@@ -153,16 +153,16 @@ button:active {
 }
 
 .convert-form__courses--dark {
-  background-image: linear-gradient(to right bottom, #ae0800, #000);
+  box-shadow: 0px 0px 5px var(--white);
 }
 
 .convert-form__courses--light {
-  background-image: linear-gradient(to right bottom, #597d73, darkcyan);
+  background-color: rgba(7, 71, 64, 0.6);
+  box-shadow: 0px 0px 5px var(--white);
 }
 
 .convert-form__courses--moon {
-  background-image: linear-gradient(to right bottom, rgb(6 6 253), #801bff);
-  box-shadow: 0px 0px 5px var(--black);
+  box-shadow: 0px 0px 5px var(--white);
 }
 
 .convert-form__inputs {
@@ -412,7 +412,9 @@ button:active {
   color: var(--white);
   max-width: 110px;
   margin-right: 12px;
-  transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+  transition:
+    background-color 0.2s ease-in,
+    box-shadow 0.2s ease-in;
 }
 
 .output-coins__output-btn--light {
@@ -874,30 +876,30 @@ button:active {
 
 @keyframes rotation {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   25% {
-    transform: rotate(10deg)
+    transform: rotate(10deg);
   }
   50% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   75% {
-    transform: rotate(-10deg)
+    transform: rotate(-10deg);
   }
 }
 
 /* Стрелочки внутри инпута убрать */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
-input[type='number'],
+input[type="number"],
 input[type="number"]:hover,
 input[type="number"]:focus {
-    appearance: none;
-    -moz-appearance: textfield;
+  appearance: none;
+  -moz-appearance: textfield;
 }
 
 /* кастомные стрелочки внутри input */
