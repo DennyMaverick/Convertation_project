@@ -72,8 +72,8 @@ const langCurrentStates = {
 
 const placeholders = {
   input: {
-    ru: "Введите число",
-    en: "Enter a number",
+    ru: "Введите сумму",
+    en: "Enter amount",
   },
 }
 
