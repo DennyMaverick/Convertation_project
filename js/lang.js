@@ -2,8 +2,8 @@
 
 const langs = {
   "title-page": {
-    ru: "Конвертер валют на JavaScript",
-    en: "Сurrency converter on JavaScript",
+    ru: "Конвертер валют",
+    en: "Сurrency converter",
   },
   title: {
     ru: "Конвертер валют",
