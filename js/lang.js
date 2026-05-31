@@ -55,7 +55,7 @@ const langs = {
   },
   "output-coins__output-btn": {
     ru: "Посчитать",
-    en: "Count",
+    en: "Convert",
   },
 }
 

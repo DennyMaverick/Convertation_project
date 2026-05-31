@@ -38,37 +38,100 @@ const arrowRight = document.querySelector(".arrows__right")
 getCurrencies()
 
 // Функция получения курса валют и отображения их на странице
+// async function getCurrencies() {
+//   const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js")
+//   const data = await response.json()
+//   const result = await data
+
+//   rates.USD = result.Valute.USD
+//   rates.EUR = result.Valute.EUR
+//   rates.GBP = result.Valute.GBP
+
+//   elementUSD.textContent = rates.USD.Value.toFixed(2)
+//   elementEUR.textContent = rates.EUR.Value.toFixed(2)
+//   elementGBP.textContent = rates.GBP.Value.toFixed(2)
+
+//   if (rates.USD.Value > rates.USD.Previous) {
+//     elementUSD.classList.add("top")
+//   } else {
+//     elementUSD.classList.add("bottom")
+//   }
+
+//   if (rates.EUR.Value > rates.EUR.Previous) {
+//     elementEUR.classList.add("top")
+//   } else {
+//     elementEUR.classList.add("bottom")
+//   }
+
+//   if (rates.GBP.Value > rates.GBP.Previous) {
+//     elementGBP.classList.add("top")
+//   } else {
+//     elementGBP.classList.add("bottom")
+//   }
+// }
+
 async function getCurrencies() {
-  const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js")
-  const data = await response.json()
-  const result = await data
-
-  rates.USD = result.Valute.USD
-  rates.EUR = result.Valute.EUR
-  rates.GBP = result.Valute.GBP
-
-  elementUSD.textContent = rates.USD.Value.toFixed(2)
-  elementEUR.textContent = rates.EUR.Value.toFixed(2)
-  elementGBP.textContent = rates.GBP.Value.toFixed(2)
-  // цвет для информера USD
-  if (rates.USD.Value > rates.USD.Previous) {
-    elementUSD.classList.add("top")
-  } else {
-    elementUSD.classList.add("bottom")
+  if (!navigator.onLine) {
+    showNoInternet()
+    return
   }
-  //  цвет для информера EUR
-  if (rates.EUR.Value > rates.EUR.Previous) {
-    elementEUR.classList.add("top")
-  } else {
-    elementEUR.classList.add("bottom")
-  }
-  //  цвет для информера GBP
-  if (rates.GBP.Value > rates.GBP.Previous) {
-    elementGBP.classList.add("top")
-  } else {
-    elementGBP.classList.add("bottom")
+
+  try {
+    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js")
+    const result = await response.json()
+
+    hideNoInternet()
+
+    rates.USD = result.Valute.USD
+    rates.EUR = result.Valute.EUR
+    rates.GBP = result.Valute.GBP
+
+    elementUSD.textContent = rates.USD.Value.toFixed(2)
+    elementEUR.textContent = rates.EUR.Value.toFixed(2)
+    elementGBP.textContent = rates.GBP.Value.toFixed(2)
+
+    // USD
+    elementUSD.classList.remove("top", "bottom")
+    elementUSD.classList.add(rates.USD.Value > rates.USD.Previous ? "top" : "bottom")
+
+    // EUR
+    elementEUR.classList.remove("top", "bottom")
+    elementEUR.classList.add(rates.EUR.Value > rates.EUR.Previous ? "top" : "bottom")
+
+    // GBP
+    elementGBP.classList.remove("top", "bottom")
+    elementGBP.classList.add(rates.GBP.Value > rates.GBP.Previous ? "top" : "bottom")
+  } catch (error) {
+    showNoInternet()
   }
 }
+
+function showNoInternet() {
+  const box = document.getElementById("offlineBox")
+
+  box.style.display = "block"
+  box.innerHTML = `
+    <div class="offline-box" style="text-align:center; padding:20px;">
+      <p class="offline-box__description">
+        Отсутствует интернет-соединение..
+      </p>
+
+    </div>
+  `
+
+  document.getElementById("retryBtn").onclick = () => {
+    getCurrencies()
+  }
+}
+
+function hideNoInternet() {
+  const box = document.getElementById("offlineBox")
+  box.style.display = "none"
+}
+
+window.addEventListener("online", () => {
+  getCurrencies()
+})
 
 result.readOnly = "true"
 
@@ -79,10 +142,7 @@ const inputValuesState = {
 const outputValuesState = {
   value: "USD",
 }
-// Слушаем изменения в input, select и result
-// input.oninput = convertValueToRight
-// result.oninput = convertValueToLeft
-// Функция конвертации
+
 function convertValueToRight() {
   if (inputValuesState.value === outputValuesState.value) {
     result.value = ""
@@ -463,5 +523,3 @@ arrowRight.addEventListener("click", function () {
     input.style.backgroundColor = "white"
   }
 })
-
-
