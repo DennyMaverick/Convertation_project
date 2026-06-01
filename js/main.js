@@ -72,16 +72,21 @@ getCurrencies()
 // }
 
 async function getCurrencies() {
-  if (!navigator.onLine) {
-    showNoInternet()
-    return
-  }
+  let timeoutId
+
+  const controller = new AbortController()
+  timeoutId = setTimeout(() => controller.abort(), 6000)
 
   try {
-    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js")
-    const result = await response.json()
+    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js", {
+      signal: controller.signal,
+    })
 
-    hideNoInternet()
+    if (!response.ok) {
+      throw new Error("API_ERROR")
+    }
+
+    const result = await response.json()
 
     rates.USD = result.Valute.USD
     rates.EUR = result.Valute.EUR
@@ -102,13 +107,24 @@ async function getCurrencies() {
     // GBP
     elementGBP.classList.remove("top", "bottom")
     elementGBP.classList.add(rates.GBP.Value > rates.GBP.Previous ? "top" : "bottom")
+
+    hideNoInternet()
+    hideNoCorrectData()
   } catch (error) {
-    showNoInternet()
+    if (error.name === "AbortError" || error.message.includes("Failed to fetch")) {
+      // реальная сетевая проблема
+      showNoInternet()
+    } else {
+      // сервер недоступен или другая проблема
+      showNoCorrectData()
+    }
+  } finally {
+    clearTimeout(timeoutId)
   }
 }
 
 function showNoInternet() {
-  const box = document.getElementById("offlineBox")
+  const box = document.getElementById("offlineBoxNoInternet")
 
   box.style.display = "block"
   box.innerHTML = `
@@ -135,8 +151,41 @@ function showNoInternet() {
   }
 }
 
+function showNoCorrectData() {
+  const box = document.getElementById("offlineBoxIncorrectData")
+
+  box.style.display = "block"
+  box.innerHTML = `
+    <div class="offline-box" style="text-align:center; padding:20px;">
+      <p class="offline-box__description">
+        Не удалось загрузить данные..
+      </p>
+      <div class="offline-box__description-retry">
+        <button id="retryBtnVPN" class="offline-box__retry-btn">
+          <a class="offline-box__retry-link">
+            попробуйте еще раз
+          </a>
+        </button>
+        <p class="offline-box__retry-off-vpn-text">
+          проверьте сеть или отключите vpn
+        </p>
+      </div>
+    </div>
+  `
+
+  document.getElementById("retryBtnVPN").onclick = (e) => {
+    e.preventDefault()
+    getCurrencies()
+  }
+}
+
 function hideNoInternet() {
-  const box = document.getElementById("offlineBox")
+  const box = document.getElementById("offlineBoxNoInternet")
+  box.style.display = "none"
+}
+
+function hideNoCorrectData() {
+  const box = document.getElementById("offlineBoxIncorrectData")
   box.style.display = "none"
 }
 
