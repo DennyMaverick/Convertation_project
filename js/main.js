@@ -116,13 +116,16 @@ function showNoInternet() {
       <p class="offline-box__description">
         Проверьте интернет и
       </p>
-      <p class="offline-box__description-retry">
+      <div class="offline-box__description-retry">
       <button id="retryBtn" class="offline-box__retry-btn">
         <a class="offline-box__retry-link">
           попробуйте еще раз
         </a>
       </button>
-      </p>
+      <p class="offline-box__retry-off-vpn-text">
+          отключите vpn
+        </p>
+      </div>
     </div>
   `
 

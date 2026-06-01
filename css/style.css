@@ -304,6 +304,12 @@ button:active {
 .offline-box__retry-btn {
   color: #66a546;
   cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.offline-box__retry-off-vpn-text {
+  color: orangered;
+  font-size: 24px;
 }
 
 @media (max-width: 768px) {
@@ -315,6 +321,11 @@ button:active {
   font-size: 17px;
   color: #66a546;
 }
+
+.offline-box__retry-off-vpn-text {
+  color: orangered;
+  font-size: 16px;
+}
 }
 
 @media (max-width: 500px) {
@@ -325,6 +336,11 @@ button:active {
   .offline-box__description-retry {
   font-size: 14px;
   color: #66a546;
+}
+
+.offline-box__retry-off-vpn-text {
+  color: orangered;
+  font-size: 13px;
 }
 }
 
