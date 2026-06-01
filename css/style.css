@@ -51,6 +51,10 @@ h6 {
   padding: 0;
 }
 
+p {
+  margin: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -280,19 +284,43 @@ button:active {
 
 .offline-box__description {
   font-size: 28px;
-  color: #ff4d4d;
+  color: var(--white);
+  margin-bottom: 15px;
+}
+
+.offline-box__description-retry {
+  font-size: 24px;
+  color: #66a546;
+}
+
+.offline-box__retry-link {
+  text-decoration: underline;
+}
+
+.offline-box__retry-btn {
+  color: #66a546;
 }
 
 @media (max-width: 768px) {
   .offline-box__description {
     font-size: 20px;
   }
+
+  .offline-box__description-retry {
+  font-size: 17px;
+  color: #66a546;
+}
 }
 
 @media (max-width: 500px) {
   .offline-box__description {
     font-size: 15px;
   }
+
+  .offline-box__description-retry {
+  font-size: 14px;
+  color: #66a546;
+}
 }
 
 
