@@ -297,8 +297,13 @@ button:active {
   text-decoration: underline;
 }
 
+.offline-box__retry-link:hover {
+  text-decoration: none;
+}
+
 .offline-box__retry-btn {
   color: #66a546;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
