@@ -36,7 +36,31 @@ const arrowsInInput = document.querySelector(".arrows")
 const arrowLeft = document.querySelector(".arrows__left")
 const arrowRight = document.querySelector(".arrows__right")
 
-getCurrencies()
+window.addEventListener("load", async () => {
+  await getCurrencies()
+})
+
+// При загрузке приложения
+window.addEventListener("DOMContentLoaded", () => {
+  if (navigator.onLine) {
+    // Интернет есть — грузим данные сразу
+    getCurrencies()
+  } else {
+    // Интернета нет — показываем сообщение об отсутствии сети
+    showNoInternet()
+  }
+})
+
+// Также слушаем событие появления интернета
+window.addEventListener("online", () => {
+  getCurrencies()
+})
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    getCurrencies()
+  }
+})
 
 // Функция получения курса валют и отображения их на странице
 // async function getCurrencies() {
@@ -74,17 +98,14 @@ getCurrencies()
 async function getCurrencies() {
   let timeoutId
 
-  // если вообще нет сети — сразу показать ошибку
-  if (!navigator.onLine) {
-    showNoInternet()
-    return
-  }
-
   const controller = new AbortController()
   timeoutId = setTimeout(() => controller.abort(), 6000) // таймаут 6 сек
 
   try {
-    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js", {signal: controller.signal})
+    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js", {
+      signal: controller.signal,
+      cache: "no-store",
+    })
 
     if (!response.ok) {
       throw new Error("API_ERROR") // сервер вернул не 200
@@ -105,6 +126,10 @@ async function getCurrencies() {
     elementEUR.textContent = rates.EUR.Value.toFixed(2)
     elementGBP.textContent = rates.GBP.Value.toFixed(2)
 
+    if (!elementUSD || !elementEUR || !elementGBP) {
+      console.log("DOM elements not found")
+    }
+
     elementUSD.classList.remove("top", "bottom")
     elementUSD.classList.add(rates.USD.Value > rates.USD.Previous ? "top" : "bottom")
 
@@ -117,10 +142,9 @@ async function getCurrencies() {
     hideNoInternet()
     hideNoCorrectData()
   } catch (error) {
-    console.log("CATCH ERROR:", error)
+    const isNetworkError = error?.name === "AbortError" || error?.name === "TypeError" || (error?.message && (error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error.message.includes("Load failed")))
 
-    // разделяем ошибки
-    if (error.name === "AbortError" || error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error instanceof TypeError) {
+    if (isNetworkError) {
       showNoInternet()
     } else {
       showNoCorrectData()
@@ -152,10 +176,13 @@ function showNoInternet() {
     </div>
   `
 
-  document.getElementById("retryBtn").onclick = (e) => {
-    getCurrencies()
-    e.preventDefault()
-  }
+  box.querySelector("button").onclick = getCurrencies
+  // document.addEventListener("click", (e) => {
+  //   if (e.target.id === "retryBtn") {
+  //     getCurrencies()
+  //     e.preventDefault()
+  //   }
+  // })
 }
 
 function showNoCorrectData() {
@@ -180,10 +207,13 @@ function showNoCorrectData() {
     </div>
   `
 
-  document.getElementById("retryBtnVPN").onclick = (e) => {
-    e.preventDefault()
-    getCurrencies()
-  }
+  box.querySelector("button").onclick = getCurrencies
+  // document.addEventListener("click", (e) => {
+  //   if (e.target.id === "retryBtnVPN") {
+  //     getCurrencies()
+  //     e.preventDefault()
+  //   }
+  // })
 }
 
 function hideNoInternet() {
@@ -195,10 +225,6 @@ function hideNoCorrectData() {
   const box = document.getElementById("offlineBoxIncorrectData")
   box.style.display = "none"
 }
-
-window.addEventListener("online", () => {
-  getCurrencies()
-})
 
 result.readOnly = "true"
 
