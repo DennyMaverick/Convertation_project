@@ -74,20 +74,29 @@ getCurrencies()
 async function getCurrencies() {
   let timeoutId
 
+  // если вообще нет сети — сразу показать ошибку
+  if (!navigator.onLine) {
+    showNoInternet()
+    return
+  }
+
   const controller = new AbortController()
-  timeoutId = setTimeout(() => controller.abort(), 6000)
+  timeoutId = setTimeout(() => controller.abort(), 6000) // таймаут 6 сек
 
   try {
-    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js", {
-      signal: controller.signal,
-    })
+    const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js", {signal: controller.signal})
 
     if (!response.ok) {
-      throw new Error("API_ERROR")
+      throw new Error("API_ERROR") // сервер вернул не 200
     }
 
     const result = await response.json()
 
+    if (!result || !result.Valute) {
+      throw new Error("BAD_DATA") // некорректный формат данных
+    }
+
+    // обновляем UI
     rates.USD = result.Valute.USD
     rates.EUR = result.Valute.EUR
     rates.GBP = result.Valute.GBP
@@ -96,26 +105,24 @@ async function getCurrencies() {
     elementEUR.textContent = rates.EUR.Value.toFixed(2)
     elementGBP.textContent = rates.GBP.Value.toFixed(2)
 
-    // USD
     elementUSD.classList.remove("top", "bottom")
     elementUSD.classList.add(rates.USD.Value > rates.USD.Previous ? "top" : "bottom")
 
-    // EUR
     elementEUR.classList.remove("top", "bottom")
     elementEUR.classList.add(rates.EUR.Value > rates.EUR.Previous ? "top" : "bottom")
 
-    // GBP
     elementGBP.classList.remove("top", "bottom")
     elementGBP.classList.add(rates.GBP.Value > rates.GBP.Previous ? "top" : "bottom")
 
     hideNoInternet()
     hideNoCorrectData()
   } catch (error) {
-    if (error.name === "AbortError" || error.message.includes("Failed to fetch")) {
-      // реальная сетевая проблема
+    console.log("CATCH ERROR:", error)
+
+    // разделяем ошибки
+    if (error.name === "AbortError" || error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error instanceof TypeError) {
       showNoInternet()
     } else {
-      // сервер недоступен или другая проблема
       showNoCorrectData()
     }
   } finally {
