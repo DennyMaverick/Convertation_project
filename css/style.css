@@ -283,6 +283,18 @@ button:active {
   color: #ff4d4d;
 }
 
+@media (max-width: 768px) {
+  .offline-box__description {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .offline-box__description {
+    font-size: 15px;
+  }
+}
+
 
 
 .form-control__option {
