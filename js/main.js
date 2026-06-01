@@ -9,6 +9,7 @@
 
 // });
 //  Объект с курсами 3-х валют
+
 const rates = {}
 //  Элементы для отображения курса валют
 const convertForm = document.querySelector(".convert-form")
@@ -122,12 +123,12 @@ function showNoInternet() {
         </a>
       </button>
       </p>
-
     </div>
   `
 
-  document.getElementById("retryBtn").onclick = () => {
+  document.getElementById("retryBtn").onclick = (e) => {
     getCurrencies()
+    e.preventDefault()
   }
 }
 
