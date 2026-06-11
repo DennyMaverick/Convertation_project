@@ -36,30 +36,11 @@ const arrowsInInput = document.querySelector(".arrows")
 const arrowLeft = document.querySelector(".arrows__left")
 const arrowRight = document.querySelector(".arrows__right")
 
+let isLoading = false
+
 // При загрузке приложения
 window.addEventListener("DOMContentLoaded", getCurrencies)
 
-window.addEventListener("focus", () => {
-  const now = Date.now()
-
-  if (!isLoading && now - lastUpdate > 300000) {
-    getCurrencies()
-  }
-})
-
-let lastUpdate = 0
-
-let isLoading = false
-
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && !isLoading) {
-    const now = Date.now()
-
-    if (now - lastUpdate > 300000) {
-      getCurrencies()
-    }
-  }
-})
 
 async function getCurrencies() {
   if (isLoading) return
@@ -107,7 +88,6 @@ async function getCurrencies() {
 
     hideNoInternet()
 
-    lastUpdate = Date.now()
   } catch (error) {
     showNoInternet()
   } finally {
@@ -118,14 +98,18 @@ async function getCurrencies() {
 
 function showNoInternet() {
   const box = document.getElementById("offlineBoxNoInternet")
+  const body = document.querySelector("body")
 
   if (!box) return
-
+  body.style.overflow = "hidden"
   box.style.display = "flex"
 }
 
 function hideNoInternet() {
   const box = document.getElementById("offlineBoxNoInternet")
+  const body = document.querySelector("body")
+  if (!box) return
+  body.style.overflow = "visible"
   box.style.display = "none"
 }
 
