@@ -109,13 +109,7 @@ async function getCurrencies() {
 
     lastUpdate = Date.now()
   } catch (error) {
-    const isNetworkError = error?.name === "AbortError" || error?.name === "TypeError" || (error?.message && (error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error.message.includes("Load failed")))
-
-    if (isNetworkError) {
-      showNoInternet()
-    } else {
-      hideNoInternet()
-    }
+    showNoInternet()
   } finally {
     clearTimeout(timeoutId)
     isLoading = false
