@@ -45,8 +45,13 @@
 
     <div class="container">
       <form class="convert-form">
-        <div class="convert-form__offline-box" id="offlineBoxNoInternet" style="display: none"></div>
-        <div class="convert-form__offline-box" id="offlineBoxIncorrectData" style="display: none"></div>
+        <div id="offlineBoxNoInternet" class="convert-form__offline-box" style="display: none">
+          <p class="offline-box__description">Проверьте интернет или</p>
+
+          <div class="offline-box__description-retry">
+            <p class="offline-box__retry-off-vpn-text">отключите VPN</p>
+          </div>
+        </div>
 
         <div class="switcher-theme">
           <button class="switcher-theme__open lang-switcher-theme__open button">выбрать тему</button>

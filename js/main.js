@@ -36,66 +36,36 @@ const arrowsInInput = document.querySelector(".arrows")
 const arrowLeft = document.querySelector(".arrows__left")
 const arrowRight = document.querySelector(".arrows__right")
 
-window.addEventListener("load", async () => {
-  await getCurrencies()
-})
-
 // При загрузке приложения
-window.addEventListener("DOMContentLoaded", () => {
-  if (navigator.onLine) {
-    // Интернет есть — грузим данные сразу
+window.addEventListener("DOMContentLoaded", getCurrencies)
+
+window.addEventListener("focus", () => {
+  const now = Date.now()
+
+  if (!isLoading && now - lastUpdate > 300000) {
     getCurrencies()
-  } else {
-    // Интернета нет — показываем сообщение об отсутствии сети
-    showNoInternet()
   }
 })
 
-// Также слушаем событие появления интернета
-window.addEventListener("online", () => {
-  getCurrencies()
-})
+let lastUpdate = 0
+
+let isLoading = false
 
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
-    getCurrencies()
+  if (document.visibilityState === "visible" && !isLoading) {
+    const now = Date.now()
+
+    if (now - lastUpdate > 300000) {
+      getCurrencies()
+    }
   }
 })
 
-// Функция получения курса валют и отображения их на странице
-// async function getCurrencies() {
-//   const response = await fetch("https://www.cbr-xml-daily.ru/daily_json.js")
-//   const data = await response.json()
-//   const result = await data
-
-//   rates.USD = result.Valute.USD
-//   rates.EUR = result.Valute.EUR
-//   rates.GBP = result.Valute.GBP
-
-//   elementUSD.textContent = rates.USD.Value.toFixed(2)
-//   elementEUR.textContent = rates.EUR.Value.toFixed(2)
-//   elementGBP.textContent = rates.GBP.Value.toFixed(2)
-
-//   if (rates.USD.Value > rates.USD.Previous) {
-//     elementUSD.classList.add("top")
-//   } else {
-//     elementUSD.classList.add("bottom")
-//   }
-
-//   if (rates.EUR.Value > rates.EUR.Previous) {
-//     elementEUR.classList.add("top")
-//   } else {
-//     elementEUR.classList.add("bottom")
-//   }
-
-//   if (rates.GBP.Value > rates.GBP.Previous) {
-//     elementGBP.classList.add("top")
-//   } else {
-//     elementGBP.classList.add("bottom")
-//   }
-// }
-
 async function getCurrencies() {
+  if (isLoading) return
+
+  isLoading = true
+
   let timeoutId
 
   const controller = new AbortController()
@@ -126,10 +96,6 @@ async function getCurrencies() {
     elementEUR.textContent = rates.EUR.Value.toFixed(2)
     elementGBP.textContent = rates.GBP.Value.toFixed(2)
 
-    if (!elementUSD || !elementEUR || !elementGBP) {
-      console.log("DOM elements not found")
-    }
-
     elementUSD.classList.remove("top", "bottom")
     elementUSD.classList.add(rates.USD.Value > rates.USD.Previous ? "top" : "bottom")
 
@@ -140,89 +106,32 @@ async function getCurrencies() {
     elementGBP.classList.add(rates.GBP.Value > rates.GBP.Previous ? "top" : "bottom")
 
     hideNoInternet()
-    hideNoCorrectData()
+
+    lastUpdate = Date.now()
   } catch (error) {
     const isNetworkError = error?.name === "AbortError" || error?.name === "TypeError" || (error?.message && (error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error.message.includes("Load failed")))
 
     if (isNetworkError) {
       showNoInternet()
     } else {
-      showNoCorrectData()
+      hideNoInternet()
     }
   } finally {
     clearTimeout(timeoutId)
+    isLoading = false
   }
 }
 
 function showNoInternet() {
   const box = document.getElementById("offlineBoxNoInternet")
 
-  box.style.display = "block"
-  box.innerHTML = `
-    <div class="offline-box" style="text-align:center; padding:20px;">
-      <p class="offline-box__description">
-        Проверьте интернет и
-      </p>
-      <div class="offline-box__description-retry">
-      <button id="retryBtn" class="offline-box__retry-btn">
-        <a class="offline-box__retry-link">
-          попробуйте еще раз
-        </a>
-      </button>
-      <p class="offline-box__retry-off-vpn-text">
-          отключите vpn
-        </p>
-      </div>
-    </div>
-  `
+  if (!box) return
 
-  box.querySelector("button").onclick = getCurrencies
-  // document.addEventListener("click", (e) => {
-  //   if (e.target.id === "retryBtn") {
-  //     getCurrencies()
-  //     e.preventDefault()
-  //   }
-  // })
-}
-
-function showNoCorrectData() {
-  const box = document.getElementById("offlineBoxIncorrectData")
-
-  box.style.display = "block"
-  box.innerHTML = `
-    <div class="offline-box" style="text-align:center; padding:20px;">
-      <p class="offline-box__description">
-        Не удалось загрузить данные..
-      </p>
-      <div class="offline-box__description-retry">
-        <button id="retryBtnVPN" class="offline-box__retry-btn">
-          <a class="offline-box__retry-link">
-            попробуйте еще раз
-          </a>
-        </button>
-        <p class="offline-box__retry-off-vpn-text">
-          проверьте сеть или отключите vpn
-        </p>
-      </div>
-    </div>
-  `
-
-  box.querySelector("button").onclick = getCurrencies
-  // document.addEventListener("click", (e) => {
-  //   if (e.target.id === "retryBtnVPN") {
-  //     getCurrencies()
-  //     e.preventDefault()
-  //   }
-  // })
+  box.style.display = "flex"
 }
 
 function hideNoInternet() {
   const box = document.getElementById("offlineBoxNoInternet")
-  box.style.display = "none"
-}
-
-function hideNoCorrectData() {
-  const box = document.getElementById("offlineBoxIncorrectData")
   box.style.display = "none"
 }
 
