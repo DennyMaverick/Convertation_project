@@ -334,6 +334,7 @@ button:active {
   }
 
   .convert-form__title {
+    margin-top: 52px;
     padding: 0;
   }
 }
