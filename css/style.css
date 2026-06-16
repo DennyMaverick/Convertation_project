@@ -104,6 +104,10 @@ button:active {
 }
 
 .convert-form {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   max-width: 693px;
   transition: all 0.3s ease-in;
@@ -124,9 +128,8 @@ button:active {
 
 .convert-form__title {
   font-weight: 700;
-  padding: 30px;
-  padding-top: 80px;
   font-size: 25px;
+  padding-top: 80px;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 38px;
@@ -145,7 +148,6 @@ button:active {
 }
 
 .convert-form__content {
-  padding: 25px;
   padding-top: 0;
 }
 
@@ -255,6 +257,7 @@ button:active {
 }
 
 .convert-form {
+  padding: 25px;
   position: relative;
 }
 
@@ -294,7 +297,6 @@ button:active {
   color: #66a546;
 }
 
-
 .offline-box__retry-btn {
   color: #66a546;
   cursor: pointer;
@@ -308,19 +310,32 @@ button:active {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .convert-form {
+    margin: 0;
+    min-height: 100dvh;
+  }
+
   .offline-box__description {
     font-size: 20px;
   }
 
   .offline-box__description-retry {
-  font-size: 17px;
-  color: #66a546;
-}
+    font-size: 17px;
+    color: #66a546;
+  }
 
-.offline-box__retry-off-vpn-text {
-  color: orangered;
-  font-size: 16px;
-}
+  .offline-box__retry-off-vpn-text {
+    color: orangered;
+    font-size: 16px;
+  }
+
+  .convert-form__title {
+    padding: 0;
+  }
 }
 
 @media (max-width: 500px) {
@@ -329,17 +344,15 @@ button:active {
   }
 
   .offline-box__description-retry {
-  font-size: 14px;
-  color: #66a546;
-}
+    font-size: 14px;
+    color: #66a546;
+  }
 
-.offline-box__retry-off-vpn-text {
-  color: orangered;
-  font-size: 13px;
+  .offline-box__retry-off-vpn-text {
+    color: orangered;
+    font-size: 13px;
+  }
 }
-}
-
-
 
 .form-control__option {
   font-size: 14px;
@@ -756,6 +769,13 @@ button:active {
 
 /* Media Requests */
 
+@media (max-width: 1199px) {
+  .convert-form {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .lang-bar__btn {
     font-size: 10px;
@@ -807,16 +827,7 @@ button:active {
   .course-item {
     padding: 10px;
   }
-}
 
-.convert-form__input {
-  max-width: 120px;
-}
-.convert-form__input::placeholder {
-  font-size: 10px;
-}
-
-@media (max-width: 760px) {
   .convert-form__items {
     flex-direction: column;
     align-items: center;
@@ -831,6 +842,14 @@ button:active {
     max-width: 470px;
   }
 }
+
+.convert-form__input {
+  max-width: 120px;
+}
+.convert-form__input::placeholder {
+  font-size: 10px;
+}
+
 
 @media (max-width: 600px) {
   .scheme-item__btn {
@@ -891,7 +910,7 @@ button:active {
   }
   .convert-form {
     margin: 0;
-    min-height: 100vh;
+    min-height: 100dvh;
   }
   .container {
     padding: 0;
@@ -906,7 +925,6 @@ button:active {
 
 @media (max-width: 350px) {
   .convert-form__content {
-    padding: 10px;
     padding-top: 0;
   }
   .course-item__title {
@@ -1046,7 +1064,7 @@ input[type="number"]:focus {
   cursor: pointer;
   padding: 6px 15px 10px;
   border-radius: 5px;
-  background-color:#20b2aa;
+  background-color: #20b2aa;
   opacity: 1;
   color: #fff;
   box-shadow: 0 0 10px #20b2aa;
