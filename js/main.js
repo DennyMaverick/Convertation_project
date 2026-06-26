@@ -336,7 +336,7 @@ schemeListItems.forEach((item) => {
 // ограничение введения количества символов в input
 
 input.addEventListener("input", function () {
-  const limit = 7
+  const limit = 8
   const splitString = this.value.split("")
   if (input.value.length > limit) {
     this.value = splitString.slice(0, limit).join("")

@@ -25,7 +25,7 @@ function inputWheel(event) {
 
 inputForm.addEventListener("change", function () {
   if (this.value < 0) {
-    inputForm.style.backgroundColor = "red"
+    inputForm.style.backgroundColor = "orangered"
   } else {
     inputForm.style.backgroundColor = "white"
   }

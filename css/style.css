@@ -30,15 +30,12 @@ body {
   align-items: center;
 }
 
-.body--light {
-  background-color: rgb(242, 226, 183);
-}
 .body--dark {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #2b2b2b;
 }
 
 .body--moon {
-  background-color: rgba(12, 36, 195, 0.4);
+  background-image: linear-gradient(to right bottom, #7d5f5f, darkblue);
 }
 
 h1,
@@ -99,11 +96,12 @@ button:active {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 10px;
 }
 
 .convert-form {
+  border-radius: 15px;
+  box-shadow: 0 0 10px #fff;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -132,7 +130,7 @@ button:active {
   padding-top: 80px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 38px;
+  margin-bottom: 60px;
 }
 
 .convert-form__title--dark {
@@ -313,10 +311,10 @@ button:active {
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
   .convert-form {
+    border-radius: 0;
     margin: 0;
     min-height: 100dvh;
   }
@@ -336,7 +334,8 @@ button:active {
   }
 
   .convert-form__title {
-    margin-top: 52px;
+    font-size: 20px;
+    margin-top: 65px;
     padding: 0;
   }
 }
@@ -354,6 +353,10 @@ button:active {
   .offline-box__retry-off-vpn-text {
     color: orangered;
     font-size: 13px;
+  }
+
+  .convert-form__title {
+    font-size: 17px;
   }
 }
 
@@ -770,6 +773,21 @@ button:active {
   display: none;
 }
 
+.output-coins__sign-value,
+.input-coins__sign-value {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border: 1px dashed var(--white);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: rotation 3s ease-in alternate infinite;
+}
+
 /* Media Requests */
 
 @media (max-width: 1199px) {
@@ -786,13 +804,13 @@ button:active {
     width: 40px;
   }
   .lang-bar {
-    right: 12px;
-    top: 12px;
+    right: 25px;
+    top: 35px;
   }
   .switcher-theme__open {
     font-size: 12px;
-    left: 12px;
-    top: 12px;
+    left: 25px;
+    top: 35px;
     padding: 5px 10px;
     padding-right: 35px;
     border-radius: 0 5px 5px 5px;
@@ -807,7 +825,7 @@ button:active {
     top: 0;
   }
   .scheme-list {
-    top: 50px;
+    top: 65px;
   }
 
   .convert-form__courses {
@@ -815,9 +833,6 @@ button:active {
     margin: 0 auto 50px;
   }
 
-  .convert-form__title {
-    font-size: 21px;
-  }
   .course-item__title {
     font-size: 20px;
     margin-bottom: 12px;
@@ -844,6 +859,10 @@ button:active {
   .convert-form__outputs {
     max-width: 470px;
   }
+  .output-coins__sign-value,
+.input-coins__sign-value {
+  font-size: 12px;
+}
 }
 
 .convert-form__input {
@@ -894,6 +913,19 @@ button:active {
   }
 }
 
+@media (max-width: 500px) {
+  .convert-form {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .switcher-theme__open {
+    left: 15px;
+  }
+  .lang-bar {
+    right: 15px;
+  }
+}
+
 @media (max-width: 450px) {
   .course-item__title {
     font-size: 18px;
@@ -922,6 +954,9 @@ button:active {
 
 @media (max-width: 390px) {
   .course-item__title {
+    font-size: 14px;
+  }
+  .course-item__value {
     font-size: 16px;
   }
 }
@@ -932,6 +967,9 @@ button:active {
   }
   .course-item__title {
     margin-bottom: 9px;
+  }
+  .convert-form__title {
+    font-size: 15px;
   }
 }
 
@@ -954,30 +992,10 @@ button:active {
     margin-right: auto;
     margin-left: 0;
   }
-  .convert-form__title {
-    font-size: 18px;
-  }
 }
 
-@media (max-width: 300px) {
-  .course-item__title {
-    font-size: 14px;
-  }
-}
 
-.output-coins__sign-value,
-.input-coins__sign-value {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  border: 1px dashed var(--white);
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: rotation 3s ease-in alternate infinite;
-}
+
 
 .result-box {
   display: flex;
@@ -1088,13 +1106,14 @@ input[type="number"]:focus {
 
 @media (min-height: 600px) {
   .convert-form__title {
-    margin-top: 25px;
+    margin-top: 65px;
   }
 }
 
-@media (min-height: 625px) {
+@media (min-height: 900px) {
   .convert-form__title {
     margin-top: 0;
   }
 }
+
 
