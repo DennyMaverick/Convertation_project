@@ -101,7 +101,6 @@ button:active {
 
 .convert-form {
   border-radius: 15px;
-  box-shadow: 0 0 10px #fff;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -307,7 +306,17 @@ button:active {
   margin-bottom: 25px;
 }
 
+@media (min-width: 997px) {
+  .convert-form {
+    box-shadow: 0 0 10px #fff;
+  }
+}
 
+@media (max-width: 996px) {
+  .convert-form {
+    background-image: none;
+  }
+}
 
 @media (max-width: 768px) {
   .container {
