@@ -16,6 +16,9 @@
   --line-moon: #fff;
   --title-moon: #dacfcf;
   --form-light-color: #d3c6c6;
+  --cyan-light-color: #20b2aa;
+  --unsuccess-color: rgb(255, 51, 51);
+  --success-color: rgb(19, 189, 61);
 }
 
 .no-scroll {
@@ -197,8 +200,8 @@ button:active {
 }
 
 .convert-form__input--focus-moon {
-  outline: 1.5px solid #20b2aa;
-  box-shadow: 0 0 5px #20b2aa;
+  outline: 1.5px solid var(--cyan-light-color);
+  box-shadow: 0 0 5px var(--cyan-light-color);
 }
 
 .convert-form__outputs,
@@ -220,20 +223,42 @@ button:active {
 .input-block--dark {
   background-color: #1a1a1b;
   transition: box-shadow 0.2s ease-in;
+  box-shadow: 0px 0px 7px var(--orange);
+  animation: box-shadow-dark 3s ease-in alternate infinite;
 }
 
-.input-block--dark:hover {
-  box-shadow: 0px 0px 7px var(--orange);
-}
 
 .input-block--moon {
   background-color: darkslateblue;
   transition: box-shadow 0.2s ease-in;
+  box-shadow: 0 0 7px var(--cyan-light-color);
+  animation: box-shadow-light 3s ease-in alternate infinite;
 }
 
-.input-block--moon:hover {
-  box-shadow: 0 0 7px var(--black);
+@keyframes box-shadow-light {
+  0% {
+    box-shadow: 0 0 3px var(--cyan-light-color);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--cyan-light-color);
+  }
+  100% {
+    box-shadow: 0 0 3px var(--cyan-light-color);
+  }
 }
+
+@keyframes box-shadow-dark {
+  0% {
+    box-shadow: 0px 0px 3px var(--orange);
+  }
+  50% {
+    box-shadow: 0px 0px 15px var(--orange);
+  }
+  100% {
+    box-shadow: 0px 0px 3px var(--orange);
+  }
+}
+
 
 .convert-form__output-item {
   height: 10px;
@@ -418,11 +443,39 @@ button:active {
 }
 
 .course-item__value.top {
-  color: rgb(255, 51, 51);
+  color: var(--unsuccess-color);
+  text-shadow: 0 0 5px var(--unsuccess-color);
+  animation: box-shadow-unsuccess 3s ease-in alternate infinite;
 }
 
 .course-item__value.bottom {
-  color: rgb(19, 189, 61);
+  color: var(--success-color);
+  text-shadow: 0 0 5px var(--success-color);
+  animation: box-shadow-success 3s ease-in alternate infinite;
+}
+
+@keyframes box-shadow-success {
+  0% {
+    text-shadow: 0 0 3px var(--success-color);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--success-color);
+  }
+  100% {
+    text-shadow: 0 0 3px var(--success-color);
+  }
+}
+
+@keyframes box-shadow-unsuccess {
+  0% {
+    text-shadow: 0 0 3px var(--unsuccess-color);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--unsuccess-color);
+  }
+  100% {
+    text-shadow: 0 0 3px var(--unsuccess-color);
+  }
 }
 
 .coins {
@@ -461,7 +514,7 @@ button:active {
 }
 
 .coins__item--moon {
-  box-shadow: 0 0 10px #20b2aa;
+  box-shadow: 0 0 10px var(--cyan-light-color);
 }
 
 .input-coins__item + .input-coins__item {
@@ -500,8 +553,8 @@ button:active {
 
 .input-coin--active-moon,
 .output-coin--active-moon {
-  background-color: #20b2aa;
-  box-shadow: 0 0 10px #20b2aa;
+  background-color: var(--cyan-light-color);
+  box-shadow: 0 0 10px var(--cyan-light-color);
 }
 
 .convert-form__items {
@@ -547,8 +600,8 @@ button:active {
 }
 
 .output-coins__output-btn--moon {
-  background-color: #20b2aa;
-  box-shadow: 0px 0 5px #20b2aa;
+  background-color: var(--cyan-light-color);
+  box-shadow: 0px 0 5px var(--cyan-light-color);
 }
 
 .output-coins__output-btn--dark:hover {
@@ -1094,16 +1147,16 @@ input[type="number"]:focus {
   cursor: pointer;
   padding: 6px 15px 10px;
   border-radius: 5px;
-  background-color: #20b2aa;
+  background-color: var(--cyan-light-color);
   opacity: 1;
   color: #fff;
-  box-shadow: 0 0 10px #20b2aa;
+  box-shadow: 0 0 10px var(--cyan-light-color);
   transition: all 0.2s ease-in;
 }
 
 .offline-box__btn:hover {
   opacity: 0.8;
-  box-shadow: 0 0 15px #20b2aa;
+  box-shadow: 0 0 15px var(--cyan-light-color);
 }
 
 .convert-form__offline-box-content {
