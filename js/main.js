@@ -243,9 +243,9 @@ InputCoinItems.forEach(function (item) {
         break
       case "TRY":
         if (langCurrentStates.startState === "ru") {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция <span class='new-coin'>NEW</span>`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira <span class='new-coin'>NEW</span>`
         }
         break
     }
@@ -304,9 +304,9 @@ OutputCoinItems.forEach(function (item) {
         break
       case "TRY":
         if (langCurrentStates.startState === "ru") {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция <span class='new-coin'>NEW</span>`
         } else {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira <span class='new-coin'>NEW</span>`
         }
         break
     }

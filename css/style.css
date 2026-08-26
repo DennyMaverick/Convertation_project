@@ -227,7 +227,6 @@ button:active {
   animation: box-shadow-dark 3s ease-in alternate infinite;
 }
 
-
 .input-block--moon {
   background-color: darkslateblue;
   transition: box-shadow 0.2s ease-in;
@@ -258,7 +257,6 @@ button:active {
     box-shadow: 0px 0px 3px var(--orange);
   }
 }
-
 
 .convert-form__output-item {
   height: 10px;
@@ -922,9 +920,9 @@ button:active {
     max-width: 470px;
   }
   .output-coins__sign-value,
-.input-coins__sign-value {
-  font-size: 12px;
-}
+  .input-coins__sign-value {
+    font-size: 12px;
+  }
 }
 
 .convert-form__input {
@@ -933,7 +931,6 @@ button:active {
 .convert-form__input::placeholder {
   font-size: 10px;
 }
-
 
 @media (max-width: 600px) {
   .scheme-item__btn {
@@ -1056,9 +1053,6 @@ button:active {
   }
 }
 
-
-
-
 .result-box {
   display: flex;
 }
@@ -1172,6 +1166,51 @@ input[type="number"]:focus {
   }
 }
 
+.coins__item--dark.input-coins--try,
+.coins__item--dark.output-coins--try {
+  box-shadow: 0 0 10px blue;
+  transition: box-shadow 0.4s ease-in;
+  /* animation: light-blue 10s infinite; */
+}
+
+.coins__item--moon.input-coins--try,
+.coins__item--moon.output-coins--try {
+  box-shadow: 0 0 15px #882eb5;
+  transition: box-shadow 0.4s ease-in;
+  /* animation: light-blue 10s infinite; */
+}
+
+
+.coins__item--dark.input-coin--active.input-coins--try,
+.coins__item--dark.output-coin--active.output-coins--try {
+  transition: background-color .3s ease-in;
+  background-color: #0c22ca;
+}
+
+.coins__item--moon.input-coin--active.input-coins--try,
+.coins__item--moon.output-coin--active.output-coins--try {
+  transition: background-color .3s ease-in, box-shadow .3s ease-in;
+  background-color: #882eb5;
+}
 
 
 
+.input-coins__item.input-coins--try:hover, .output-coins__item.output-coins--try:hover {
+  box-shadow: 0 0 1px var(--active-input-coin-box-shadow-hover);
+}
+
+.new-coin {
+  color: rgb(15, 205, 142);
+}
+
+@keyframes light-blue {
+  0% {
+    box-shadow: 0 0 2px blue;
+  }
+  50% {
+    box-shadow: 0 0 10px blue;
+  }
+  100% {
+    box-shadow: 0 0 2px blue;
+  }
+}
