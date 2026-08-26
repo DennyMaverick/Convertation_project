@@ -96,7 +96,7 @@ button:active {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   padding: 10px;
@@ -109,7 +109,7 @@ button:active {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  max-width: 693px;
+  max-width: 900px;
   transition: all 0.3s ease-in;
   margin: 20px;
 }

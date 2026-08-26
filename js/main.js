@@ -20,6 +20,7 @@ const coinNameIn = document.querySelector("#coinNameIn")
 const elementUSD = document.querySelector('[data-value="USD"]')
 const elementEUR = document.querySelector('[data-value="EUR"]')
 const elementGBP = document.querySelector('[data-value="GBP"]')
+const elementTL = document.querySelector('[data-value="TRY"]')
 // Элементы формы, ввод суммы, выбор валюты, поле с результатом
 const input = document.querySelector("#input")
 const result = document.querySelector("#result")
@@ -36,11 +37,14 @@ const arrowsInInput = document.querySelector(".arrows")
 const arrowLeft = document.querySelector(".arrows__left")
 const arrowRight = document.querySelector(".arrows__right")
 
+function getRate(coin) {
+  return coin === "TRY" ? rates[coin].Value / 10 : rates[coin].Value
+}
+
 let isLoading = false
 
 // При загрузке приложения
 window.addEventListener("DOMContentLoaded", getCurrencies)
-
 
 async function getCurrencies() {
   if (isLoading) return
@@ -72,10 +76,12 @@ async function getCurrencies() {
     rates.USD = result.Valute.USD
     rates.EUR = result.Valute.EUR
     rates.GBP = result.Valute.GBP
+    rates.TRY = result.Valute.TRY
 
     elementUSD.textContent = rates.USD.Value.toFixed(2)
     elementEUR.textContent = rates.EUR.Value.toFixed(2)
     elementGBP.textContent = rates.GBP.Value.toFixed(2)
+    elementTL.textContent = (rates.TRY.Value / 10).toFixed(2)
 
     elementUSD.classList.remove("top", "bottom")
     elementUSD.classList.add(rates.USD.Value > rates.USD.Previous ? "top" : "bottom")
@@ -86,8 +92,10 @@ async function getCurrencies() {
     elementGBP.classList.remove("top", "bottom")
     elementGBP.classList.add(rates.GBP.Value > rates.GBP.Previous ? "top" : "bottom")
 
-    hideNoInternet()
+    elementTL.classList.remove("top", "bottom")
+    elementTL.classList.add(rates.TRY.Value > rates.TRY.Previous ? "top" : "bottom")
 
+    hideNoInternet()
   } catch (error) {
     showNoInternet()
   } finally {
@@ -135,26 +143,31 @@ function convertValueToRight() {
       switch (inputValuesState.value) {
         case "RUB":
           if (item.dataset.coin) {
-            result.value = (parseFloat(input.value) / rates[item.dataset.coin].Value).toFixed(2)
+            result.value = parseFloat(input.value / getRate(item.dataset.coin)).toFixed(2)
           }
           break
         case "EUR":
           if (item.dataset.coin) {
-            result.value = ((parseFloat(input.value) * rates[`${inputValuesState.value}`].Value).toFixed(2) / rates[item.dataset.coin].Value).toFixed(2)
+            result.value = parseFloat((input.value * getRate(inputValuesState.value)).toFixed(2) / getRate(item.dataset.coin)).toFixed(2)
           }
 
           break
         case "USD":
           if (item.dataset.coin) {
-            result.value = ((parseFloat(input.value) * rates[`${inputValuesState.value}`].Value).toFixed(2) / rates[item.dataset.coin].Value).toFixed(2)
+            result.value = parseFloat((input.value * getRate(inputValuesState.value)) / getRate(item.dataset.coin)).toFixed(2)
           }
 
           break
         case "GBP":
           if (item.dataset.coin) {
-            result.value = ((parseFloat(input.value) * rates[`${inputValuesState.value}`].Value).toFixed(2) / rates[item.dataset.coin].Value).toFixed(2)
+            result.value = parseFloat((input.value * getRate(inputValuesState.value)).toFixed(2) / getRate(item.dataset.coin)).toFixed(2)
           }
 
+          break
+        case "TRY":
+          if (item.dataset.coin) {
+            result.value = parseFloat((input.value * getRate(inputValuesState.value)) / getRate(item.dataset.coin)).toFixed(2)
+          }
           break
       }
     } else if (!input.value) {
@@ -167,7 +180,7 @@ function convertValueToRight() {
       switch (outputValuesState.value) {
         case "RUB":
           if (item.dataset.coin) {
-            result.value = (parseFloat(input.value) * rates[item.dataset.coin].Value).toFixed(2)
+            result.value = parseFloat(input.value * getRate(item.dataset.coin)).toFixed(2)
           }
           break
       }
@@ -228,6 +241,13 @@ InputCoinItems.forEach(function (item) {
           coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
         }
         break
+      case "TRY":
+        if (langCurrentStates.startState === "ru") {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+        } else {
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
+        }
+        break
     }
     this.classList.add("input-coin--active", `input-coin--active-${activeThemeStates.currentTheme}`)
 
@@ -280,6 +300,13 @@ OutputCoinItems.forEach(function (item) {
           coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
         } else {
           coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+        }
+        break
+      case "TRY":
+        if (langCurrentStates.startState === "ru") {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+        } else {
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
         }
         break
     }
@@ -442,6 +469,9 @@ OutputCoinItems.forEach(function (item) {
       case "USD":
         updateSignResultValue("&#36;")
         break
+      case "TRY":
+        updateSignResultValue("&#8378;")
+        break
       default:
         updateSignResultValue("&#36;")
         break
@@ -465,6 +495,9 @@ InputCoinItems.forEach(function (item) {
         break
       case "USD":
         updateSignInputValue("&#36;")
+        break
+      case "TRY":
+        updateSignInputValue("&#8378;")
         break
       default:
         updateSignInputValue("&#8381;")

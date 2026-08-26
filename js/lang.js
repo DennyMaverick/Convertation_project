@@ -9,18 +9,6 @@ const langs = {
     ru: "Конвертер валют",
     en: "Сurrency converter",
   },
-  "course-item__title-usd": {
-    ru: "Курс USD",
-    en: "USD Rate",
-  },
-  "course-item__title-eur": {
-    ru: "Курс EUR",
-    en: "EUR Rate",
-  },
-  "course-item__title-gbp": {
-    ru: "Курс GBP",
-    en: "GBP Rate",
-  },
   "switcher-theme__open": {
     ru: "выбрать тему",
     en: "change theme",
