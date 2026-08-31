@@ -128,10 +128,49 @@ button:active {
 
 .convert-form__title {
   font-weight: 700;
-  font-size: 25px;
+  font-size: 40px;
   padding-top: 80px;
   text-transform: uppercase;
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.convert-form__title-new-color {
+  background-image: -webkit-linear-gradient(90deg, #7077eb, #8a4ce0);
+  background-image: linear-gradient(90deg, #7077eb, #8a4ce0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.convert-form__subtitle {
+  text-align: center;
+  color: #b3bad0;
+  font-size: 16px;
+}
+
+.convert-form__subtitle-first-phrase {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+}
+
+.convert-form__subtitle-first-phrase::before {
+  position: absolute;
+  left: -17px;
+  top: 4.5px;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2fd7ad;
+}
+
+.convert-form__subtitle-new-color {
+  color: #69b6ff;
+}
+
+.convert-form__title-wrapper {
   margin-bottom: 60px;
 }
 
@@ -152,10 +191,28 @@ button:active {
 }
 
 .convert-form__courses {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 50px;
   border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.convert-form__courses-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.convert-form__courses-title {
+  text-transform: uppercase;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  color: var(--white);
+  font-size: 17px;
+}
+
+.course-item__description {
+  color: #66748f;
+  font-size: 20px;
 }
 
 .convert-form__courses--dark {
@@ -342,6 +399,10 @@ button:active {
 }
 
 @media (max-width: 768px) {
+  .convert-form__courses-title {
+    margin-left: 10px;
+    font-size: 12px;
+  }
   .container {
     padding: 0;
   }
@@ -366,8 +427,8 @@ button:active {
   }
 
   .convert-form__title {
-    font-size: 20px;
-    margin-top: 65px;
+    font-size: 40px;
+    margin-top: 90px;
     padding: 0;
   }
 }
@@ -388,7 +449,16 @@ button:active {
   }
 
   .convert-form__title {
-    font-size: 17px;
+    font-size: 27px;
+  }
+  .convert-form__subtitle {
+    font-size: 11px;
+  }
+  .convert-form__subtitle-first-phrase::before {
+    top: 4px;
+    left: -13px;
+    width: 6px;
+    height: 6px;
   }
 }
 
@@ -425,7 +495,7 @@ button:active {
 }
 
 .course-item {
-  padding: 20px;
+  padding: 20px 20px 5px;
 }
 
 .course-item__title {
@@ -438,6 +508,7 @@ button:active {
 .course-item__value {
   font-size: 30px;
   font-weight: 400;
+  margin-bottom: 15px;
 }
 
 .course-item__value.top {
@@ -848,6 +919,60 @@ button:active {
   animation: rotation 3s ease-in alternate infinite;
 }
 
+.real-time-rates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.real-time-rates-decor {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  color: #2fd7ad;
+}
+
+.real-time-rates-decor__text {
+  position: relative;
+  display: inline-block;
+  margin-right: 4px;
+  letter-spacing: 1px;
+}
+
+.real-time-rates-decor__text::before {
+  position: absolute;
+  left: -15px;
+  top: 5.5px;
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2fd7ad;
+  animation: pulse-fade 1.5s infinite alternate;
+}
+
+@keyframes pulse-fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+.convert-form__pulse-img {
+  width: 30px;
+  height: 17px;
+}
+
 /* Media Requests */
 
 @media (max-width: 1199px) {
@@ -858,6 +983,27 @@ button:active {
 }
 
 @media (max-width: 768px) {
+  .real-time-rates-decor__text {
+    font-size: 10px;
+    margin-right: 0;
+  }
+  .real-time-rates-decor__text::before {
+    top: 3.5px;
+    left: -11px;
+    width: 5px;
+    height: 5px;
+  }
+  .convert-form__pulse-img {
+    width: 25px;
+    height: 12px;
+  }
+
+  .convert-form__real-time-rates-decor {
+    margin-right: 10px;
+  }
+  .course-item__description {
+    font-size: 10px;
+  }
   .lang-bar__btn {
     font-size: 10px;
     padding: 7px;
@@ -891,6 +1037,8 @@ button:active {
   .convert-form__courses {
     max-width: 470px;
     margin: 0 auto 50px;
+    padding-top: 7px;
+    padding-bottom: 5px;
   }
 
   .course-item__title {
@@ -900,6 +1048,7 @@ button:active {
 
   .course-item__value {
     font-size: 24px;
+    margin-bottom: 10px;
   }
 
   .course-item {
@@ -994,11 +1143,17 @@ button:active {
   }
 }
 @media (max-width: 430px) {
+  .course-item__description {
+    font-size: 9px;
+  }
   #result {
     max-width: 107px;
   }
 }
 @media (max-width: 400px) {
+  .course-item__description {
+    font-size: 7px;
+  }
   .scheme-item__btn {
     font-size: 10px;
   }
@@ -1028,13 +1183,22 @@ button:active {
     margin-bottom: 9px;
   }
   .convert-form__title {
-    font-size: 15px;
+    font-size: 25px;
+  }
+  .convert-form__subtitle {
+    font-size: 10px;
   }
 }
 
 @media (max-width: 325px) {
   .course-item {
     padding: 5px;
+  }
+  .convert-form__courses-title {
+    margin-left: 5px;
+  }
+  .convert-form__real-time-rates-decor {
+    margin-right: 5px;
   }
 }
 
@@ -1162,7 +1326,7 @@ input[type="number"]:focus {
 
 @media (min-height: 600px) and (max-width: 768px) {
   .convert-form__title {
-    margin-top: 65px;
+    margin-top: 90px;
   }
 }
 
@@ -1180,22 +1344,22 @@ input[type="number"]:focus {
   /* animation: light-blue 10s infinite; */
 }
 
-
 .coins__item--dark.input-coin--active.input-coins--try,
 .coins__item--dark.output-coin--active.output-coins--try {
-  transition: background-color .3s ease-in;
+  transition: background-color 0.3s ease-in;
   background-color: #0c22ca;
 }
 
 .coins__item--moon.input-coin--active.input-coins--try,
 .coins__item--moon.output-coin--active.output-coins--try {
-  transition: background-color .3s ease-in, box-shadow .3s ease-in;
+  transition:
+    background-color 0.3s ease-in,
+    box-shadow 0.3s ease-in;
   background-color: #882eb5;
 }
 
-
-
-.input-coins__item.input-coins--try:hover, .output-coins__item.output-coins--try:hover {
+.input-coins__item.input-coins--try:hover,
+.output-coins__item.output-coins--try:hover {
   box-shadow: 0 0 1px var(--active-input-coin-box-shadow-hover);
 }
 

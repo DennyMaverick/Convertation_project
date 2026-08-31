@@ -5,9 +5,13 @@ const langs = {
     ru: "Конвертер валют",
     en: "Сurrency converter",
   },
-  title: {
-    ru: "Конвертер валют",
-    en: "Сurrency converter",
+  "title-first-word": {
+    ru: "Конвертер",
+    en: "Currency",
+  },
+  "title-second-word": {
+    ru: "валют",
+    en: "converter",
   },
   "switcher-theme__open": {
     ru: "выбрать тему",
@@ -45,7 +49,39 @@ const langs = {
     ru: "Посчитать",
     en: "Convert",
   },
+  "convert-form-title-rates": {
+    ru: "Актуальные курсы",
+    en: "Current exchange rates",
+  },
+  "course-item__description-usd": {
+    ru: "Курс USD / RUB",
+    en: "Rate USD / RUB",
+  },
+  "course-item__description-euro": {
+    ru: "Курс EUR / RUB",
+    en: "Rate EUR / RUB",
+  },
+  "course-item__description-gbp": {
+    ru: "Курс GBP / RUB",
+    en: "Rate GBP / RUB",
+  },
+  "course-item__description-try": {
+    ru: "Курс TRY / RUB",
+    en: "Rate TRY / RUB",
+  },
+  "convert-form__subtitle-first-phrase": {
+    ru: "Актуальные курсы валют",
+    en: "Real-time currency",
+  },
+  "convert-form__subtitle-second-phrase": {
+    ru: "в реальном времени",
+    en: "exchange rates",
+  },
 }
+
+// const repeatElems = {
+
+// }
 
 // получение hash из строки браузера - #ru или #en
 let hash = window.location.hash
@@ -109,6 +145,15 @@ function changeLang() {
       elemPlaceholder.placeholder = placeholders[key][hash]
     }
   }
+
+  // for (let key in repeatElems) {
+  //   let elems = document.querySelectorAll(".lang-" + key)
+  //   elems.forEach(function (elem) {
+  //     if (elem && repeatElems[key][hash]) {
+  //       elem.innerHTML = repeatElems[key][hash]
+  //     }
+  //   })
+  // }
 }
 // запуск функции changeLang()
 changeLang()

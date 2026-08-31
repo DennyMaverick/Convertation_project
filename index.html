@@ -70,24 +70,40 @@
           <button class="lang-bar__btn button" data-lang="ru">ru</button>
           <button class="lang-bar__btn button" data-lang="en">en</button>
         </div>
-        <h1 class="convert-form__title lang-title">Конвертер валют</h1>
+        <div class="convert-form__title-wrapper">
+          <h1 class="convert-form__title"><span class="lang-title-first-word">Конвертер</span> <span class="lang-title-second-word convert-form__title-new-color">валют</span></h1>
+          <p class="convert-form__subtitle"><span class="convert-form__subtitle-first-phrase lang-convert-form__subtitle-first-phrase">Актуальные курсы валют</span> <span class="convert-form__subtitle-new-color lang-convert-form__subtitle-second-phrase">в реальном времени</span></p>
+        </div>
         <div class="convert-form__content">
           <div class="convert-form__courses courses">
-            <div class="courses__item course-item">
-              <div class="course-item__title lang-course-item__title-usd item">USD</div>
-              <div class="course-item__value" data-value="USD">--.--</div>
+            <div class="real-time-rates">
+              <h2 class="convert-form__courses-title lang-convert-form-title-rates">Актуальные курсы</h2>
+              <div class="convert-form__real-time-rates-decor real-time-rates-decor">
+                <span class="real-time-rates-decor__text">LIVE</span>
+                <img class="convert-form__pulse-img" src="./images/pulse-icon.png" alt="pulse icon">
+              </div>
             </div>
-            <div class="courses__item course-item">
-              <div class="course-item__title lang-course-item__title-eur">EUR</div>
-              <div class="course-item__value" data-value="EUR">--.--</div>
-            </div>
-            <div class="courses__item course-item">
-              <div class="course-item__title lang-course-item__title-gbp">GBP</div>
-              <div class="course-item__value" data-value="GBP">--.--</div>
-            </div>
-            <div class="courses__item course-item">
-              <div class="course-item__title lang-course-item__title-tl item">TRY</div>
-              <div class="course-item__value" data-value="TRY">--.--</div>
+            <div class="convert-form__courses-wrapper">
+              <div class="courses__item course-item">
+                <div class="course-item__title lang-course-item__title-usd item">USD</div>
+                <div class="course-item__value" data-value="USD">--.--</div>
+                <p class="course-item__description lang-course-item__description-usd">Курс USD / RUB</p>
+              </div>
+              <div class="courses__item course-item">
+                <div class="course-item__title lang-course-item__title-eur">EUR</div>
+                <div class="course-item__value" data-value="EUR">--.--</div>
+                <p class="course-item__description lang-course-item__description-euro">Курс EUR / RUB</p>
+              </div>
+              <div class="courses__item course-item">
+                <div class="course-item__title lang-course-item__title-gbp">GBP</div>
+                <div class="course-item__value" data-value="GBP">--.--</div>
+                <p class="course-item__description lang-course-item__description-gbp">Курс GBP / RUB</p>
+              </div>
+              <div class="courses__item course-item">
+                <div class="course-item__title lang-course-item__title-tl item">TRY</div>
+                <div class="course-item__value" data-value="TRY">--.--</div>
+                <p class="course-item__description lang-course-item__description-try">Курс TRY / RUB</p>
+              </div>
             </div>
           </div>
           <div class="convert-form__items">
