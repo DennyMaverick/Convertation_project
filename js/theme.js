@@ -126,29 +126,27 @@ const colorsThemesInputDisable = {
 
 switchers.forEach((switcher) => {
   switcher.addEventListener("click", function (e) {
-    if (e.target.closest(".scheme-item__btn").dataset.theme === "light") {
-      themeSwitch("light")
+    if (e.target.closest(".scheme-item__btn").dataset.theme === "moon") {
+      themeSwitch("moon")
 
-      activeThemeStates.currentTheme = "light"
+      activeThemeStates.currentTheme = "moon"
     } else if (e.target.closest(".scheme-item__btn").dataset.theme === "dark") {
       themeSwitch("dark")
 
       activeThemeStates.currentTheme = "dark"
     } else {
-      themeSwitch("moon")
+      themeSwitch("dark")
 
-      activeThemeStates.currentTheme = "moon"
+      activeThemeStates.currentTheme = "dark"
     }
     localStorage.setItem("theme", this.dataset.theme)
 
     // замена цвета неактивного инпута - смена темы при клике на кнопку выбора темы
 
-    if (activeThemeStates.currentTheme === "light") {
-      colorsThemesInputDisable.state = "#48A9A9"
+    if (activeThemeStates.currentTheme === "moon") {
+      colorsThemesInputDisable.state = "#3F3FE8"
     } else if (activeThemeStates.currentTheme === "dark") {
       colorsThemesInputDisable.state = "#A79E9E"
-    } else {
-      colorsThemesInputDisable.state = "#3F3FE8"
     }
 
     if (inputValuesState.value === outputValuesState.value) {
@@ -176,9 +174,9 @@ if (activeTheme === null) {
 // подсветка активному элементу переключателя тем, если еще не было клика
 if (activeTheme) {
   const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
-
   currentThemeBtn.classList.add("scheme-item__btn--active")
 } else {
   const currentThemeBtn = document.querySelector(`[data-theme = "dark"]`)
   currentThemeBtn.classList.add("scheme-item__btn--active")
+  themeSwitch("dark")
 }
