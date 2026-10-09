@@ -31,10 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
-
 
 .body--dark {
   background-color: #2b2b2b;
@@ -121,10 +118,6 @@ button:active {
   background-color: var(--black);
 }
 
-.convert-form--light {
-  background-color: rgba(0, 139, 139, 0.7);
-}
-
 .convert-form--moon {
   background-image: linear-gradient(to right bottom, #7d5f5f, darkblue);
 }
@@ -181,10 +174,6 @@ button:active {
   color: var(--white);
 }
 
-.convert-form__title--light {
-  color: #084740;
-}
-
 .convert-form__title--moon {
   color: var(--title-moon);
 }
@@ -194,11 +183,33 @@ button:active {
 }
 
 .convert-form__courses {
+  overflow: hidden;
+  position: relative;
   margin-bottom: 50px;
   border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
+  isolation: isolate;
+  background-image: url("../images/world-background.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  animation: courses-background-pulse 100s linear infinite;
 }
+
+@keyframes courses-background-pulse {
+  0% {
+    background-position: left center;
+  }
+  50% {
+    background-position: right center;
+  }
+  100% {
+    background-position: left center;
+  }
+}
+
+
 
 .convert-form__courses-wrapper {
   display: flex;
@@ -214,16 +225,22 @@ button:active {
 }
 
 .course-item__description {
-  color: #66748f;
+  color: #fff;
   font-size: 20px;
 }
 
-.convert-form__courses--dark {
-  box-shadow: 0px 0px 5px var(--white);
+.convert-form__courses::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, rgba(65, 10, 25, 0.35), rgba(25, 5, 15, 0.15) 50%, rgba(5, 3, 10, 0.4));
+  z-index: -1;
 }
 
-.convert-form__courses--light {
-  background-color: rgba(7, 71, 64, 0.6);
+.convert-form__courses--dark {
   box-shadow: 0px 0px 5px var(--white);
 }
 
@@ -249,11 +266,6 @@ button:active {
   /* font-size: 15px; */
 }
 
-.convert-form__input--focus-light {
-  outline: 1.5px solid #084740;
-  box-shadow: 0 0 5px #084740;
-}
-
 .convert-form__input--focus-dark {
   outline: 1.5px solid var(--orange);
   box-shadow: 0 0 5px var(--orange);
@@ -269,15 +281,6 @@ button:active {
   padding: 15px;
   display: flex;
   justify-content: space-between;
-}
-
-.input-block--light {
-  background-color: darkcyan;
-  transition: box-shadow 0.2s ease-in;
-}
-
-.input-block--light:hover {
-  box-shadow: 0 0 7px var(--black);
 }
 
 .input-block--dark {
@@ -501,10 +504,6 @@ button:active {
   transition: all 0.2s ease-in;
 }
 
-.coins__item--light {
-  box-shadow: 0 0 10px #084740;
-}
-
 .coins__item--dark {
   box-shadow: 0 0 10px var(--orange);
 }
@@ -533,12 +532,6 @@ button:active {
 
 .coins__item + .coins__item {
   margin-left: 20px;
-}
-
-.input-coin--active-light,
-.output-coin--active-light {
-  background-color: #084740;
-  box-shadow: 0 0 10px #084740;
 }
 
 .input-coin--active-dark,
@@ -585,11 +578,6 @@ button:active {
     box-shadow 0.2s ease-in;
 }
 
-.output-coins__output-btn--light {
-  background-color: #084740;
-  box-shadow: 0px 0 5px #084740;
-}
-
 .output-coins__output-btn--dark {
   background-color: var(--orange);
   box-shadow: 0px 0 5px var(--orange);
@@ -603,11 +591,6 @@ button:active {
 .output-coins__output-btn--dark:hover {
   background-color: rgba(165, 42, 42, 0.8);
   box-shadow: 0 0 7px var(--dark);
-}
-
-.output-coins__output-btn--light:hover {
-  background-color: rgba(8, 71, 64, 0.8);
-  box-shadow: 0 0 7px var(--white);
 }
 
 .output-coins__output-btn--moon:hover {
@@ -647,14 +630,6 @@ button:active {
 .lang-bar__btn:last-child {
   border-radius: 0 30px 30px 0;
   padding-left: 4px;
-}
-
-.lang-bar__btn--light:first-child {
-  background-color: dimgrey;
-}
-
-.lang-bar__btn--light:last-child {
-  background-color: darkcyan;
 }
 
 .lang-bar__btn--dark:first-child {
@@ -699,10 +674,6 @@ button:active {
 
 .switcher-theme__open:hover {
   opacity: 0.8;
-}
-
-.switcher-theme__open--light {
-  background-color: #2a90a5;
 }
 
 .switcher-theme__open--dark {
@@ -754,10 +725,6 @@ button:active {
   height: 100%;
 
   transition: width 0.2s ease-in;
-}
-
-.scheme-item__btn--light::after {
-  background-color: rgba(41, 167, 167, 0.3);
 }
 
 .scheme-item__btn--dark::after {
@@ -1349,34 +1316,6 @@ input[type="number"]:focus {
   .convert-form__title {
     margin-top: 90px;
   }
-}
-
-.coins__item--dark.input-coins--try,
-.coins__item--dark.output-coins--try {
-  box-shadow: 0 0 10px blue;
-  transition: box-shadow 0.4s ease-in;
-  /* animation: light-blue 10s infinite; */
-}
-
-.coins__item--moon.input-coins--try,
-.coins__item--moon.output-coins--try {
-  box-shadow: 0 0 15px #882eb5;
-  transition: box-shadow 0.4s ease-in;
-  /* animation: light-blue 10s infinite; */
-}
-
-.coins__item--dark.input-coin--active.input-coins--try,
-.coins__item--dark.output-coin--active.output-coins--try {
-  transition: background-color 0.3s ease-in;
-  background-color: #0c22ca;
-}
-
-.coins__item--moon.input-coin--active.input-coins--try,
-.coins__item--moon.output-coin--active.output-coins--try {
-  transition:
-    background-color 0.3s ease-in,
-    box-shadow 0.3s ease-in;
-  background-color: #882eb5;
 }
 
 .input-coins__item.input-coins--try:hover,
