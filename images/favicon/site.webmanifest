@@ -1,6 +1,6 @@
 {
-  "name": "Конвертер валют",
-  "short_name": "Конвертер",
+  "name": "Currency Converter – Конвертер валют онлайн",
+  "short_name": "Конвертер валют",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -16,6 +16,6 @@
     }
   ],
   "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "background_color": "#1672bd",
   "display": "standalone"
 }
