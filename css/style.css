@@ -286,15 +286,13 @@ button:active {
 .input-block--dark {
   background-color: #1a1a1b;
   transition: box-shadow 0.2s ease-in;
-  box-shadow: 0px 0px 7px var(--orange);
-  animation: box-shadow-dark 3s ease-in alternate infinite;
+  box-shadow: 0px 0px 7px var(--white);
 }
 
 .input-block--moon {
   background-color: darkslateblue;
   transition: box-shadow 0.2s ease-in;
-  box-shadow: 0 0 7px var(--cyan-light-color);
-  animation: box-shadow-light 3s ease-in alternate infinite;
+  box-shadow: 0 0 7px var(--white);
 }
 
 @keyframes box-shadow-light {
