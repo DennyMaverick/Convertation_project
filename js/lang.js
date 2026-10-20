@@ -17,10 +17,6 @@ const langs = {
     ru: "выбрать тему",
     en: "change theme",
   },
-  "light-theme": {
-    ru: "светлая",
-    en: "light",
-  },
   "dark-theme": {
     ru: "тёмная",
     en: "dark",

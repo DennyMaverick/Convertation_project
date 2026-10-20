@@ -216,7 +216,7 @@ InputCoinItems.forEach(function (item) {
     }
 
     InputCoinItems.forEach(function (item) {
-      item.classList.remove("input-coin--active", "input-coin--active-light", "input-coin--active-dark", "input-coin--active-moon")
+      item.classList.remove("input-coin--active", "input-coin--active-dark", "input-coin--active-moon")
     })
     switch (this.dataset.coin) {
       case "EUR":
@@ -278,7 +278,7 @@ OutputCoinItems.forEach(function (item) {
       input.style.backgroundColor = "#fff"
     }
     OutputCoinItems.forEach(function (item) {
-      item.classList.remove("output-coin--active", "output-coin--active-light", "output-coin--active-dark", "output-coin--active-moon")
+      item.classList.remove("output-coin--active", "output-coin--active-dark", "output-coin--active-moon")
     })
     switch (this.dataset.coin) {
       case "EUR":
@@ -372,9 +372,7 @@ input.addEventListener("input", function () {
 
 // замена цвета неактивного инпута - смена темы при старте страницы
 
-if (activeThemeStates.currentTheme === "light") {
-  colorsThemesInputDisable.state = "#48A9A9"
-} else if (activeThemeStates.currentTheme === "dark") {
+if (activeThemeStates.currentTheme === "dark") {
   colorsThemesInputDisable.state = "#A79E9E"
 } else {
   colorsThemesInputDisable.state = "#3F3FE8"
