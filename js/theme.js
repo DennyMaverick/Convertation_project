@@ -155,9 +155,6 @@ if (activeTheme === null) {
 
 themeSwitch(activeThemeStates.currentTheme)
 
-console.log(activeTheme)
-console.log(typeof activeTheme)
-console.log(Boolean(activeTheme))
 // подсветка активному элементу переключателя тем, если еще не было клика
 if (activeTheme) {
   const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
