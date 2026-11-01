@@ -80,27 +80,29 @@ const themes = {
     },
   },
 }
-function themeSwitch(theme) {
-  for (key in themes) {
-    const elems = document.querySelectorAll(key)
-    elems.forEach((elem) => {
-      if ((elem && themes[key].theme.dark) || themes[key].theme.moon) {
-        elem.classList.remove(`${themes[key].theme.dark}`, `${themes[key].theme.moon}`)
 
-        if (theme === "dark") {
-          elem.classList.add(`${themes[key].theme.dark}`)
-        } else {
-          elem.classList.add(`${themes[key].theme.moon}`)
-        }
+function themeSwitch(theme) {
+  for (const key in themes) {
+    const elems = document.querySelectorAll(key)
+
+    elems.forEach((elem) => {
+      elem.classList.remove(themes[key].theme.dark, themes[key].theme.moon)
+
+      if (theme === "dark") {
+        elem.classList.add(themes[key].theme.dark)
+      } else {
+        elem.classList.add(themes[key].theme.moon)
       }
     })
   }
 }
 
-const activeTheme = localStorage.getItem("theme")
+const storedTheme = localStorage.getItem("theme")
+
+const activeTheme = storedTheme === "null" ? null : storedTheme
 
 let activeThemeStates = {
-  currentTheme: `${activeTheme}`,
+  currentTheme: activeTheme,
 }
 
 // изменение цвета - замена темы - для неактивного инпута
@@ -124,7 +126,7 @@ switchers.forEach((switcher) => {
 
       activeThemeStates.currentTheme = "dark"
     }
-    localStorage.setItem("theme", this.dataset.theme)
+    localStorage.setItem("theme", activeThemeStates.currentTheme)
 
     // замена цвета неактивного инпута - смена темы при клике на кнопку выбора темы
 
@@ -148,18 +150,18 @@ switchers.forEach((switcher) => {
 })
 
 if (activeTheme === null) {
-  themeSwitch("dark")
-  activeThemeStates = {
-    currentTheme: "dark",
-  }
-} else {
-  themeSwitch(activeTheme)
+  activeThemeStates.currentTheme = "dark"
 }
 
+themeSwitch(activeThemeStates.currentTheme)
+
+console.log(activeTheme)
+console.log(typeof activeTheme)
+console.log(Boolean(activeTheme))
 // подсветка активному элементу переключателя тем, если еще не было клика
 if (activeTheme) {
   const currentThemeBtn = document.querySelector(`[data-theme = ${activeTheme}]`)
-  currentThemeBtn.classList.add("scheme-item__btn--active")
+  currentThemeBtn?.classList.add("scheme-item__btn--active")
 } else {
   const currentThemeBtn = document.querySelector(`[data-theme = "dark"]`)
   currentThemeBtn.classList.add("scheme-item__btn--active")
