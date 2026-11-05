@@ -395,18 +395,14 @@ button:active {
 }
 
 .form-input__input {
-  max-width: 260px;
+  max-width: 310px;
   margin-bottom: 30px;
 }
 
 .form-input__output {
-  max-width: 280px;
+  max-width: 310px;
   width: 100%;
   margin-bottom: 30px;
-}
-
-.form-input__input, .form-input__output {
-  min-height: 40px;
 }
 
 .form-input__title,
@@ -908,10 +904,6 @@ button:active {
     min-height: 160px;
     width: 100%;
   }
-
-  .form-input__input, .form-input__output {
-  min-height: auto;
-}
 }
 
 @media (max-width: 768px) {
