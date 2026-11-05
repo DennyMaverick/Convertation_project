@@ -34,12 +34,12 @@ const langs = {
     en: "Give:",
   },
   "form-output__coin": {
-    ru: "USD — Доллар США",
-    en: "USD — Dollar USA",
+    ru: "USD &mdash; Доллар США",
+    en: "USD &mdash; Dollar USA",
   },
   "form-input__coin": {
-    ru: "RUB - Российский рубль",
-    en: "RUB — Russian Ruble",
+    ru: "RUB &mdash; Российский рубль",
+    en: "RUB &mdash; Russian Ruble",
   },
   "output-coins__output-btn": {
     ru: "Посчитать",
