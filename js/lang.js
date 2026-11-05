@@ -38,8 +38,8 @@ const langs = {
     en: "USD — Dollar USA",
   },
   "form-input__coin": {
-    ru: "RUB - Рубль Россия",
-    en: "RUB — Ruble Russia",
+    ru: "RUB - Российский рубль",
+    en: "RUB — Russian Ruble",
   },
   "output-coins__output-btn": {
     ru: "Посчитать",

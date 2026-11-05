@@ -201,9 +201,9 @@ InputCoinItems.forEach(function (item) {
       inputValuesState.value = event.target.dataset.coin
     } else if (event.target.dataset.value === "RUB") {
       if (langCurrentStates.startState === "ru") {
-        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Российский рубль`
       } else {
-        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
+        coinNameIn.innerHTML = `${this.dataset.value.toUpperCase()} - Russian Ruble`
       }
       inputValuesState.value = "RUB"
     }
@@ -231,21 +231,21 @@ InputCoinItems.forEach(function (item) {
         if (langCurrentStates.startState === "ru") {
           coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Dollar USA`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - US Dollar`
         }
         break
       case "GBP":
         if (langCurrentStates.startState === "ru") {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Британский фунт`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - British Pound`
         }
         break
       case "TRY":
         if (langCurrentStates.startState === "ru") {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Турецкая лира`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish Lira`
         }
         break
     }
@@ -264,9 +264,9 @@ OutputCoinItems.forEach(function (item) {
       outputValuesState.value = event.target.dataset.coin
     } else if (event.target.dataset.value === "RUB") {
       if (langCurrentStates.startState === "ru") {
-        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Рубль Россия`
+        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Российский рубль`
       } else {
-        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Ruble Russia`
+        coinNameOut.innerHTML = `${this.dataset.value.toUpperCase()} - Russian Ruble`
       }
       outputValuesState.value = "RUB"
     }
@@ -292,21 +292,21 @@ OutputCoinItems.forEach(function (item) {
         if (langCurrentStates.startState === "ru") {
           coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Доллар США`
         } else {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Dollar USA`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - US Dollar`
         }
         break
       case "GBP":
         if (langCurrentStates.startState === "ru") {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Фунт стерлингов`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Британский фунт`
         } else {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Pound sterling`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - British Pound`
         }
         break
       case "TRY":
         if (langCurrentStates.startState === "ru") {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Лира Турция`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Турецкая лира`
         } else {
-          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish lira`
+          coinNameOut.innerHTML = `${this.dataset.coin.toUpperCase()} - Turkish Lira`
         }
         break
     }
