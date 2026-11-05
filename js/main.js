@@ -223,7 +223,7 @@ InputCoinItems.forEach(function (item) {
         if (langCurrentStates.startState === "ru") {
           coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Евро`
         } else {
-          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} -Euro`
+          coinNameIn.innerHTML = `${this.dataset.coin.toUpperCase()} - Euro`
         }
 
         break
