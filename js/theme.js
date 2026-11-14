@@ -79,6 +79,18 @@ const themes = {
       moon: "convert-form__input--focus-moon",
     },
   },
+  ".header": {
+    theme: {
+      dark: "header--dark",
+      moon: "header--light",
+    },
+  },
+  ".footer": {
+    theme: {
+      dark: "footer--dark",
+      moon: "footer--light",
+    },
+  },
 }
 
 function themeSwitch(theme) {

@@ -35,7 +35,7 @@ const langs = {
   },
   "form-output__coin": {
     ru: "USD &mdash; Доллар США",
-    en: "USD &mdash; Dollar USA",
+    en: "USD &mdash; US Dollar",
   },
   "form-input__coin": {
     ru: "RUB &mdash; Российский рубль",
@@ -73,16 +73,25 @@ const langs = {
     ru: "в реальном времени",
     en: "exchange rates",
   },
+  "privacy-policy-title": {
+    ru: "Политика конфиденциальности",
+    en: "Privacy Policy",
+  },
 }
 
-// const repeatElems = {
+const repeatElems = {
+  "logo-title": {
+    ru: "Currency Converter – Конвертер валют онлайн",
+    en: "Currency Converter Online",
+  },
+}
 
-// }
+
 
 // получение hash из строки браузера - #ru или #en
 let hash = window.location.hash
 // начало hash массива строки начинается со второго символа - ru или en
-hash = hash.substr(1)
+hash = hash.slice(1)
 
 const langCurrentStates = {
   startState: hash,
@@ -142,14 +151,14 @@ function changeLang() {
     }
   }
 
-  // for (let key in repeatElems) {
-  //   let elems = document.querySelectorAll(".lang-" + key)
-  //   elems.forEach(function (elem) {
-  //     if (elem && repeatElems[key][hash]) {
-  //       elem.innerHTML = repeatElems[key][hash]
-  //     }
-  //   })
-  // }
+  for (let key in repeatElems) {
+    let elems = document.querySelectorAll(".lang-" + key)
+    elems.forEach(function (elem) {
+      if (elem && repeatElems[key][hash]) {
+        elem.innerHTML = repeatElems[key][hash]
+      }
+    })
+  }
 }
 // запуск функции changeLang()
 changeLang()
