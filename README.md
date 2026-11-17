@@ -1,6 +1,5 @@
 # Currency Converter – Конвертер валют онлайн
 
----
 
 <p>
 
