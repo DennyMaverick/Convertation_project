@@ -546,6 +546,7 @@ template {
   background-color: #2fd7ad;
 }
 .convert-form__subtitle-new-color {
+  margin-left: 4px;
   display: inline-block;
   color: #69b6ff;
 }
