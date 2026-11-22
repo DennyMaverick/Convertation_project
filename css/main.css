@@ -1391,6 +1391,46 @@ template {
     opacity: 1;
   }
 }
+.main {
+  position: relative;
+}
+.main__arrow {
+  z-index: 9980;
+  cursor: pointer;
+  -webkit-transform: rotate(180deg) scale(1);
+      -ms-transform: rotate(180deg) scale(1);
+          transform: rotate(180deg) scale(1);
+  -webkit-transition: -webkit-transform 0.3s ease-in;
+  transition: -webkit-transform 0.3s ease-in;
+  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  width: 25px;
+  height: 25px;
+  color: #ffffff;
+}
+.main__arrow:hover {
+  -webkit-transform: rotate(180deg) scale(1.3);
+      -ms-transform: rotate(180deg) scale(1.3);
+          transform: rotate(180deg) scale(1.3);
+}
+.main__arrow--link {
+  width: 25px;
+  height: 25px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  right: max((100vw - 1170px) / 2, 10px);
+  top: 510px;
+  z-index: 9998;
+}
+
 .winter-snowfall {
   position: fixed;
   inset: 0;
@@ -1435,6 +1475,10 @@ body {
           justify-content: space-between;
   font-family: "Open Sans", sans-serif;
   min-height: 100vh;
+}
+
+.main {
+  min-height: 100dvh;
 }
 
 .body--dark {
@@ -1619,6 +1663,28 @@ input[type=number]:focus {
   }
 }
 
+@media (min-height: 1100px){
+  .main {
+    min-height: auto;
+  }
+}
+
+@media (min-height: 1110px){
+  .main__arrow--link {
+    display: none;
+  }
+}
+
+@media (min-height: 1400px){
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+}
+
 @media (min-height: 600px) and (max-width: 768px){
   .convert-form__title {
     margin-top: 90px;
@@ -1638,6 +1704,9 @@ input[type=number]:focus {
 }
 
 @media (max-width: 992px){
+  .main__arrow--link {
+    right: 90px;
+  }
   .header {
     display: none;
   }
@@ -1671,6 +1740,16 @@ input[type=number]:focus {
 }
 
 @media (max-width: 768px){
+  .main__arrow {
+    width: 15px;
+    height: 15px;
+  }
+  .main__arrow--link {
+    width: 20px;
+    height: 20px;
+    right: 30px;
+    top: 460px;
+  }
   .logo-title {
     font-size: 11px;
   }
@@ -1754,6 +1833,7 @@ input[type=number]:focus {
     padding: 0;
   }
   .convert-form {
+    min-height: 100dvh;
     border-radius: 0;
     margin-bottom: 0;
     max-width: 525px;
@@ -1804,6 +1884,13 @@ input[type=number]:focus {
 }
 
 @media (max-width: 600px){
+  .convert-form {
+    max-width: 100%;
+    padding: 15px;
+  }
+  .convert-form__courses {
+    max-width: 100%;
+  }
   .scheme-item__btn {
     font-size: 12px;
   }
@@ -1901,6 +1988,9 @@ input[type=number]:focus {
   }
   .logo-title {
     font-size: 11px;
+  }
+  .main__arrow--link {
+    top: 500px;
   }
   .course-item__description {
     font-size: 7px;
