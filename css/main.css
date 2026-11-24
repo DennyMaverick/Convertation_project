@@ -1158,8 +1158,8 @@ template {
   transition: box-shadow 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
 }
 .lang-bar__btn:hover {
-  -webkit-box-shadow: 0 0 10px var(--white);
-          box-shadow: 0 0 10px var(--white);
+  -webkit-box-shadow: 0 0 10px #ffffff;
+          box-shadow: 0 0 10px #ffffff;
 }
 .lang-bar__btn:first-child {
   border-radius: 30px 0 0 30px;
@@ -1431,6 +1431,133 @@ template {
   z-index: 9998;
 }
 
+.orientation-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 24px;
+  background-color: #101d29;
+  -webkit-animation: orientation-fade-in 0.35s ease both;
+          animation: orientation-fade-in 0.35s ease both;
+}
+.orientation-lock__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+.orientation-lock__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 28px;
+  border-radius: 22px;
+  -webkit-box-shadow: 0 0 25px rgba(76, 191, 204, 0.12);
+          box-shadow: 0 0 25px rgba(76, 191, 204, 0.12);
+}
+.orientation-lock__icon svg {
+  width: 42px;
+  height: 42px;
+}
+.orientation-lock__icon--light {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+.orientation-lock__icon--dark {
+  border: 1px solid rgba(76, 191, 204, 0.6);
+  color: #4cbfcc;
+}
+.orientation-lock__title {
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+}
+.orientation-lock__description {
+  max-width: 300px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.orientation-lock--light::after {
+  content: "";
+  position: absolute;
+  z-index: -500;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(35, 35, 35, 0.65)), color-stop(30%, rgba(45, 45, 45, 0.45)), color-stop(65%, rgba(55, 55, 55, 0.2)), to(rgba(55, 55, 55, 0.05)));
+  background: linear-gradient(to top, rgba(35, 35, 35, 0.65) 0%, rgba(45, 45, 45, 0.45) 30%, rgba(55, 55, 55, 0.2) 65%, rgba(55, 55, 55, 0.05) 100%);
+}
+.orientation-lock--light {
+  background-color: #69c3af;
+}
+.orientation-lock--dark::after {
+  content: "";
+  position: absolute;
+  z-index: -500;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(35, 35, 35, 0.65)), color-stop(30%, rgba(45, 45, 45, 0.45)), color-stop(65%, rgba(55, 55, 55, 0.2)), to(rgba(55, 55, 55, 0.05)));
+  background: linear-gradient(to top, rgba(35, 35, 35, 0.65) 0%, rgba(45, 45, 45, 0.45) 30%, rgba(55, 55, 55, 0.2) 65%, rgba(55, 55, 55, 0.05) 100%);
+}
+.orientation-lock--dark {
+  background-color: #ce7059;
+}
+
+body.is-mobile-landscape .orientation-lock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+body.is-mobile-landscape .convert-form {
+  display: none;
+}
+
+@-webkit-keyframes orientation-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes orientation-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .winter-snowfall {
   position: fixed;
   inset: 0;
@@ -1692,6 +1819,9 @@ input[type=number]:focus {
 }
 
 @media (max-width: 1199px){
+  .header {
+    display: none;
+  }
   .convert-form {
     max-width: 100%;
   }
@@ -1904,6 +2034,17 @@ input[type=number]:focus {
   }
 }
 
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  .orientation-lock {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .convert-form {
+    display: none;
+  }
+}
+
 @media (max-width: 580px){
   .coins__item {
     padding: 5px 8px;
@@ -1958,6 +2099,17 @@ input[type=number]:focus {
     left: -13px;
     width: 6px;
     height: 6px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) and (pointer: coarse) and (hover: none){
+  .orientation-lock {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .app {
+    display: none;
   }
 }
 
